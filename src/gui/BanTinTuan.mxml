@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 width="100%" height="100%">
+	<s:VGroup>
+		
+	<s:HGroup>
+		<s:Group>
+			<s:ButtonBar  width="60">
+				<s:ArrayCollection>
+					<fx:String><</fx:String>
+					<fx:String>></fx:String>
+				</s:ArrayCollection>
+			</s:ButtonBar>
+		</s:Group>
+		
+		<s:Group>
+			<s:Label>
+				Tháng 2 Năm 2017
+			</s:Label>
+		</s:Group>
+		
+		<s:Group>
+			<s:ButtonBar  width="160">
+				<s:ArrayCollection>
+					<fx:String>Tuần</fx:String>
+					<fx:String>Tháng</fx:String>
+				</s:ArrayCollection>
+			</s:ButtonBar>
+		</s:Group>
+	</s:HGroup>
+	
+		
+	</s:VGroup>
+	
+</s:Group>

@@ -1,0 +1,29 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+@namespace gui "gui.*";
+
+.maunen{
+	fillColor:#000000;
+}
+
+gui|Header s|Label{
+	fontWeight: bold;
+	color: #FFFFFF;
+}
+
+gui|Menu s|Label{	
+	fontSize: 15px;
+	fontFamily: Arial;
+	
+}
+gui|Menu .nodeMenu {
+	fontWeight: bold;
+	paddingLeft: 10px;
+}
+
+gui|Menu .childMenu{
+	paddingLeft: 20px;
+}
+
+
