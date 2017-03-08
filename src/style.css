@@ -4,8 +4,12 @@
 @namespace gui "gui.*";
 
 .maunen{
-	fillColor:#000000;
+	fillColor:#6600CC;
 }
+
+/*.maunenhomnay{
+	fillColor:#FF99FF;
+}*/
 
 gui|Header s|Label{
 	fontWeight: bold;
@@ -26,4 +30,14 @@ gui|Menu .childMenu{
 	paddingLeft: 20px;
 }
 
+s|List.noneBorder{
+	borderVisible:"false" 
+}
+
+gui|FormYCNghiPhep s|Label{
+	fontWeight: bold;
+}
+gui|XemYCNghiPopup  s|Label{
+	fontWeight: bold;
+}
 
