@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				xmlns:s="library://ns.adobe.com/flex/spark" 
+				xmlns:mx="library://ns.adobe.com/flex/mx" 
+				autoDrawBackground="true"
+				height="100%" width="125"
+				creationComplete="itemrenderer1_creationCompleteHandler(event)">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			import model.ThuHeader;
+			
+			protected function itemrenderer1_creationCompleteHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				var thu:model.ThuHeader = data as model.ThuHeader;
+				tenthu.text = thu.tenThu;
+				ngay.text = thu.ngay;
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<s:BorderContainer width="100%" height="100%">
+		<s:layout>
+			<s:VerticalLayout gap="0" horizontalAlign="center"
+							  verticalAlign="middle"
+							  >
+				
+			</s:VerticalLayout>
+		</s:layout>
+		
+		<s:Label id="tenthu" />
+		<s:Label id="ngay" paddingTop="5" color="#FF9900"/>
+	</s:BorderContainer>
+	
+</s:ItemRenderer>
