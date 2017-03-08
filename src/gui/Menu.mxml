@@ -2,28 +2,79 @@
 <s:BorderContainer xmlns:fx="http://ns.adobe.com/mxml/2009" 
 				   xmlns:s="library://ns.adobe.com/flex/spark" 
 				   xmlns:mx="library://ns.adobe.com/flex/mx"
-				   width="100%" height="100%">
-	
+				   width="100%" height="100%"
+				   xmlns:e="events.*">
+	<fx:Metadata>
+		[Event(name="clickBt", type="event.StatesEvents")]
+	</fx:Metadata>
 	<s:layout>
 		<s:VerticalLayout>
 			
 		</s:VerticalLayout>
 	</s:layout>
+	<fx:Script>
+		<![CDATA[
+			import event.StatesEvents;
+			
+			protected function bantin_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				var btBanTin:StatesEvents= new StatesEvents("clickBt","btbantin");
+				this.dispatchEvent(btBanTin);
+			}
+			
+			protected function nhanvien_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				var btNhanvien:StatesEvents= new StatesEvents("clickBt","btnhanvien");
+				this.dispatchEvent(btNhanvien);
+			}
+			
+			protected function ycnghiphep_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				var btYcNhanVien:StatesEvents= new StatesEvents("clickBt","btycnghiphep");
+				this.dispatchEvent(btYcNhanVien);
+			}
+			
+			protected function lsnghi_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				var btLsnghi:StatesEvents= new StatesEvents("clickBt","btlsnghi");
+				this.dispatchEvent(btLsnghi);
+			}
+			
+			protected function pheduyetyc_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				var btPheduyetyc:StatesEvents= new StatesEvents("clickBt","btpheduyetyc");
+				this.dispatchEvent(btPheduyetyc);
+			}
+			
+		]]>
+	</fx:Script>
 	
 	<s:BitmapImage x="10" y="58" 
 				   source="img/ProjectKit_logo.png"/>
 	
-	<s:Button label="Bản Tin" styleName="nodeMenu" id="bantin" skinClass="gui.ButtonSkin" >		
+	<s:Button label="Bản Tin" styleName="nodeMenu" id="btbantin" 
+			  skinClass="gui.ButtonSkin" click="bantin_clickHandler(event)">		
 	</s:Button>
 	<s:Label text="Quản lý nhân viên" styleName="nodeMenu" >		
 	</s:Label>
-	<s:Button label="Nhân viên" styleName="childMenu" skinClass="gui.ButtonSkin" >		
+	<s:Button label="Nhân viên" styleName="childMenu" skinClass="gui.ButtonSkin" 
+			  id="btnhanvien" click="nhanvien_clickHandler(event)">		
 	</s:Button>
 	<s:Label text="Nghỉ phép" styleName="nodeMenu" >		
 	</s:Label>
-	<s:Button label="Yêu cầu nghỉ phép"  styleName="childMenu" skinClass="gui.ButtonSkin" >		
+	<s:Button label="Yêu cầu nghỉ phép"  styleName="childMenu" skinClass="gui.ButtonSkin" 
+			  id="btycnghiphep" click="ycnghiphep_clickHandler(event)">		
 	</s:Button>
-	<s:Button label="Lịch sử nghỉ" styleName="childMenu" skinClass="gui.ButtonSkin" >		
+	<s:Button label="Lịch sử nghỉ" styleName="childMenu" skinClass="gui.ButtonSkin" 
+			  id="btlsnghi" click="lsnghi_clickHandler(event)">		
+	</s:Button>	
+	<s:Button label="Phê duyệt yêu cầu" styleName="childMenu" skinClass="gui.ButtonSkin" 
+			  id="btpheduyetyc" click="pheduyetyc_clickHandler(event)">		
 	</s:Button>
 	
 </s:BorderContainer>
