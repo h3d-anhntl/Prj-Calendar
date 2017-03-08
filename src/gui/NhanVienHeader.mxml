@@ -4,14 +4,27 @@
 				   xmlns:mx="library://ns.adobe.com/flex/mx"
 				   width="100%" height="100%">
 	
+	
 	<s:layout>
-		<s:HorizontalLayout  padding="40"></s:HorizontalLayout>
+		<s:HorizontalLayout  padding="35"></s:HorizontalLayout>
 	</s:layout>
+	
+	<fx:Script>
+		<![CDATA[
+			import spark.events.IndexChangeEvent;
+			protected function buttonbar1_changeHandler(event:IndexChangeEvent):void
+			{
+				
+				dispatchEvent(event);
+			}
+			
+		]]>
+	</fx:Script>
 	
 	<s:Label text="Nhân Viên" fontSize="20" fontWeight="bold" width="90%">		
 	</s:Label>
 	
-	<s:ButtonBar  width="60">
+	<s:ButtonBar  width="60"  requireSelection="true" change="buttonbar1_changeHandler(event)">
 		<s:ArrayCollection>
 			<fx:String></fx:String>
 			<fx:String>=</fx:String>
