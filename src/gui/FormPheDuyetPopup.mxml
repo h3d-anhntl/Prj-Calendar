@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:BorderContainer xmlns:fx="http://ns.adobe.com/mxml/2009"
+				   xmlns:s="library://ns.adobe.com/flex/spark"
+				   xmlns:mx="library://ns.adobe.com/flex/mx"
+				   width="100%" height="100%">
+	
+	<s:layout>
+		<s:VerticalLayout gap="0">
+			
+		</s:VerticalLayout>
+	</s:layout>
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.managers.PopUpManager;
+			
+			protected function label1_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				PopUpManager.removePopUp(this);
+			}
+		]]>
+	</fx:Script>
+	
+	
+	<s:HGroup>
+		<s:Label paddingBottom="10" paddingLeft="10" paddingTop="10"
+				 text="Thông tin xin nghỉ chi tiết" width="580"/>
+		<s:Label text="x" click="label1_clickHandler(event)" fontSize="22" color="red"/>
+	</s:HGroup>
+	
+	<s:Button width="100%" height="30" enabled="false">		
+	</s:Button>
+	
+	<s:HGroup gap="0" padding="20">
+		<s:VGroup width="100" gap="0" horizontalAlign="center" verticalAlign="middle">
+			<s:Label paddingTop="10" text="Loại nghỉ"/>
+			<s:Label paddingTop="30" text="Thời lượng"/>
+			<s:Label paddingTop="60" text="Lý do"/>
+		</s:VGroup>
+		<mx:VRule height="278">
+			
+		</mx:VRule>
+		<s:VGroup gap="0" horizontalAlign="left" paddingLeft="20" verticalAlign="middle">
+			<s:ComboBox width="350" selectedIndex="0" enabled="false" >
+				<s:dataProvider>
+					<s:ArrayList>
+						<fx:String>Nghỉ phép</fx:String>
+					</s:ArrayList>
+				</s:dataProvider> 
+			</s:ComboBox>
+			
+			<s:HGroup gap="0" horizontalAlign="center" paddingBottom="20" paddingTop="20"
+					  verticalAlign="middle">
+				
+				<mx:DateField width="165" text="03/08/2017" enabled="false">
+					
+				</mx:DateField>
+				
+				<s:Label paddingLeft="10" paddingRight="10" text="-"/>
+				
+				<mx:DateField width="165" text="03/08/2017" enabled="false">
+					
+				</mx:DateField>
+				
+				<s:Label paddingLeft="10" text="0.5 ngày"/>
+			</s:HGroup>
+			
+			<s:HGroup gap="0" horizontalAlign="center" paddingBottom="20" verticalAlign="middle">
+				<s:CheckBox width="70" label="Sáng" enabled="false">
+					
+				</s:CheckBox>
+				
+				<s:CheckBox width="70" label="Chiều" selected="true" enabled="false">
+					
+				</s:CheckBox>
+				
+				<s:CheckBox label="Cả ngày" enabled="false">
+					
+				</s:CheckBox>
+			</s:HGroup>
+			
+			<s:TextArea width="350" text="Đi ăn đám cưới" enabled="false">
+				
+			</s:TextArea>
+		</s:VGroup>
+	</s:HGroup>
+	<mx:HRule width="100%">
+		
+	</mx:HRule>
+	
+	<s:HGroup gap="0" paddingTop="10" paddingBottom="10" verticalAlign="middle" 
+			  horizontalAlign="right" paddingLeft="400">
+		<s:Button label="Chấp nhận" color="red">
+			
+		</s:Button>
+		
+		<s:Label text="hoặc" paddingLeft="10" paddingRight="10">
+			
+		</s:Label>
+		
+		<s:Button label="Từ chối">
+			
+		</s:Button>	
+	</s:HGroup>
+	
+</s:BorderContainer>
