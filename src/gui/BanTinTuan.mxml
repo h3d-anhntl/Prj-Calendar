@@ -2,35 +2,163 @@
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 xmlns:mx="library://ns.adobe.com/flex/mx"
-		 width="100%" height="100%">
-	<s:VGroup>
-		
-	<s:HGroup>
-		<s:Group>
-			<s:ButtonBar  width="60">
-				<s:ArrayCollection>
-					<fx:String><</fx:String>
-					<fx:String>></fx:String>
-				</s:ArrayCollection>
-			</s:ButtonBar>
-		</s:Group>
-		
-		<s:Group>
-			<s:Label>
-				Tháng 2 Năm 2017
-			</s:Label>
-		</s:Group>
-		
-		<s:Group>
-			<s:ButtonBar  width="160">
-				<s:ArrayCollection>
-					<fx:String>Tuần</fx:String>
-					<fx:String>Tháng</fx:String>
-				</s:ArrayCollection>
-			</s:ButtonBar>
-		</s:Group>
-	</s:HGroup>
+		 xmlns:g="gui.*"
+		 width="100%" height="100%"
+		 creationComplete="group1_creationCompleteHandler(event)">
 	
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			import model.NhanVien;
+			import model.ThuHeader;
+			[Bindable]
+			public var listThu:ArrayCollection = new ArrayCollection;
+			
+			public var nv:model.NhanVien = new model.NhanVien;
+			
+			
+			
+			protected function group1_creationCompleteHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				var listNV:ArrayCollection = new ArrayCollection;
+				nv.tenviettat = "Huong";
+				listNV.addItem(nv);
+				listNV.addItem(nv);
+				listNV.addItem(nv);
+				listNV.addItem(nv);
+				
+				var listNVTheoThu:ArrayCollection = new ArrayCollection;
+				listNVTheoThu.addItem(listNV);
+				listNVTheoThu.addItem(listNV);
+				listNVTheoThu.addItem(listNV);
+				listNVTheoThu.addItem(listNV);
+				listNVTheoThu.addItem(listNV);
+				listNVTheoThu.addItem(listNV);				
+				listNVTheoThu.addItem(listNV);
+				
+				cangay.dataProvider = listNVTheoThu;
+				sang.dataProvider = listNVTheoThu;
+				chieu.dataProvider = listNVTheoThu;
+				
+				var listthu:ArrayCollection = new ArrayCollection;
+				var thu:model.ThuHeader = new model.ThuHeader;
+				thu.ngay = "06/03/2017";
+				thu.tenThu = "Thứ 2";
+				listthu.addItem(thu);
+				var thu1:model.ThuHeader = new model.ThuHeader;
+				thu1.ngay = "07/03/2017";
+				thu1.tenThu = "Thứ 3";
+				listthu.addItem(thu1);
+				var thu2:model.ThuHeader = new model.ThuHeader;
+				thu2.ngay = "08/03/2017";
+				thu2.tenThu = "Thứ 4";
+				listthu.addItem(thu2);
+				var thu3:model.ThuHeader = new model.ThuHeader;
+				thu3.ngay = "09/03/2017";
+				thu3.tenThu = "Thứ 5";
+				listthu.addItem(thu3);
+				var thu4:model.ThuHeader = new model.ThuHeader;
+				thu4.ngay = "10/03/2017";
+				thu4.tenThu = "Thứ 6";
+				listthu.addItem(thu4);
+				var thu5:model.ThuHeader = new model.ThuHeader;
+				thu5.ngay = "11/03/2017";
+				thu5.tenThu = "Thứ 7";
+				listthu.addItem(thu5);
+				var thu6:model.ThuHeader = new model.ThuHeader;
+				thu6.ngay = "12/03/2017";
+				thu6.tenThu = "Chủ nhật";
+				listthu.addItem(thu6);
+				
+				thuheader.dataProvider = listthu;
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<s:VGroup width="100%" gap="0">
+		
+		<s:HGroup width="100%" horizontalAlign="center" 
+				  verticalAlign="middle" gap="0" height="40">
+			<s:Group width="10%">
+				<s:layout>
+					<s:HorizontalLayout horizontalAlign="left">
+						
+					</s:HorizontalLayout>
+				</s:layout>
+				<s:ButtonBar  width="60">
+					<s:ArrayCollection>
+						<fx:String>&lt;</fx:String>
+						<fx:String>></fx:String>
+					</s:ArrayCollection>
+				</s:ButtonBar>
+			</s:Group>
+			
+			<s:Group width="60%">
+				<s:Label fontSize="24">
+					Tháng 2 Năm 2017
+				</s:Label>
+			</s:Group>
+			
+			<s:Group width="30%">
+				<s:layout>
+					<s:HorizontalLayout horizontalAlign="right" gap="0">
+						
+					</s:HorizontalLayout>
+				</s:layout>
+				<s:ButtonBar  width="160" requireSelection="true">
+					<s:ArrayCollection>
+						<fx:String>Tuần</fx:String>
+						<fx:String>Tháng</fx:String>
+					</s:ArrayCollection>
+				</s:ButtonBar>
+			</s:Group>
+		</s:HGroup>
+		
+		<!--Table danh sách điểm danh nhân viên-->
+		
+		<s:VGroup width="100%"  gap="0" height="580">
+			
+			<s:HGroup width="100%" height="40"  id="headerTable" gap="0">
+				<g:CaBorderContainer lbCa="W1" width="50" height="100%"/>
+					<s:DataGroup id="thuheader" itemRenderer="gui.ThuHeaderRende" width="100%" height="100%">
+						<s:layout>
+							<s:HorizontalLayout gap="0"/>
+						</s:layout>
+					</s:DataGroup>
+				
+			</s:HGroup>
+			
+			<s:HGroup gap="0" height="100" width="100%">
+				<g:CaBorderContainer lbCa="Cả ngày"  width="50" height="100%" />
+								
+				<s:DataGroup id="cangay" itemRenderer="gui.LabelListNV" width="100%" height="100%">
+					<s:layout>
+						<s:HorizontalLayout gap="0"/>
+					</s:layout>
+				</s:DataGroup>
+			</s:HGroup>
+			
+			<s:HGroup gap="0" height="170" width="100%">
+				<g:CaBorderContainer lbCa="Sáng"  width="50" />
+				<s:DataGroup id="sang" itemRenderer="gui.LabelListNV" width="100%" height="100%">
+					<s:layout>
+						<s:HorizontalLayout gap="0"/>
+					</s:layout>
+				</s:DataGroup>
+			</s:HGroup>
+			
+			<s:HGroup gap="0" height="170" width="100%">
+				<g:CaBorderContainer lbCa="Chiều" width="50" />
+				<s:DataGroup id="chieu" itemRenderer="gui.LabelListNV" width="100%" height="100%">
+					<s:layout>
+						<s:HorizontalLayout gap="0"/>
+					</s:layout>
+				</s:DataGroup>
+			</s:HGroup>
+		</s:VGroup>
 		
 	</s:VGroup>
 	
