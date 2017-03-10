@@ -7,28 +7,43 @@
 			   xmlns:even="event.*">
 	
 	<fx:Style source="style.css" />
-	<s:states>
-		
-		<fx:Script>
-			<![CDATA[
-				protected function menu3_clickBtHandler(event:StatesEvents):void
-				{
-					// TODO Auto-generated method stub
-				}
-			]]>
-		</fx:Script>
-		
-		<fx:Script>
+	
+	<fx:Script>
 		<![CDATA[
 			import event.StatesEvents;
+			/*
+			public static function getTopAplication():DisplayObject{
+				return this;
+			}*/
+			protected function menu3_clickBtHandler(e:StatesEvents):void
+			{
+				// TODO Auto-generated method stub
+				if(e.idBt == "btbantin"){
+					currentState = "bantin";
+				} else if( e.idBt == "btnhanvien"){
+					currentState = "nhanvien"
+				} else if( e.idBt == "btycnghiphep"){
+					currentState = "ycNghiphep"
+				} else if( e.idBt == "btlsnghi"){
+					currentState = "lsNghiphep";
+				} else if( e.idBt == "btpheduyetyc"){
+					currentState = "pheduyet";
+				} else if( e.idBt == "btTaikhoan"){
+					currentState = "qlTaikhoan";
+				}
+			}
 		]]>
 	</fx:Script>
+	
+	<s:states>
 		<s:State name="bantin" />
 		<s:State name="nhanvien" />
 		<s:State name="ycNghiphep" />
 		<s:State name="lsNghiphep" />
 		<s:State name="pheduyet" />
+		<s:State name="qlTaikhoan"/>
 	</s:states>
+	
 	
 	<s:Group width="100%" height="40">
 		<core:SolidColorRect width="100%" height="100%" styleName="maunen" />
@@ -43,8 +58,17 @@
 			<gui:BanTin width="100%" height="620" includeIn="bantin">
 				
 			</gui:BanTin>
-			<gui:NhanVien  height="620" includeIn="nhanvien">				
-			</gui:NhanVien>
+			<!--<gui:NhanVien  height="620" includeIn="nhanvien">				
+			</gui:NhanVien>-->
+			<!--<gui:NhanVienNew  height="620" includeIn="nhanvien">
+				
+			</gui:NhanVienNew>-->
+			<gui:QLNhanvien width="100%" height="620" includeIn="nhanvien">
+				
+			</gui:QLNhanvien>
+			<gui:QLTaiKhoan width="100%" height="620" includeIn="qlTaikhoan">
+				
+			</gui:QLTaiKhoan>
 			<gui:YCNghiPhep width="100%" height="620" includeIn="ycNghiphep">
 				
 			</gui:YCNghiPhep>

@@ -4,11 +4,23 @@ package event
 
 	public class StatesEvents extends Event
 	{
-		public var idBt:String;
+		private var _idBt:String;
+
+		public function get idBt():String
+		{
+			return _idBt;
+		}
+
 		public function StatesEvents( type:String, idBt:String)
 		{
 			super(type, true);
-			this.idBt = idBt;
+			this._idBt = idBt;
 		}
+		
+		override public function clone():Event
+		{
+			return new StatesEvents(this.type,this.idBt);
+		}
+		
 	}
 }

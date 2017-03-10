@@ -51,6 +51,13 @@
 				this.dispatchEvent(btPheduyetyc);
 			}
 			
+			protected function btTaikhoan_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				var btTaikhoan:StatesEvents= new StatesEvents("clickBt","btTaikhoan");
+				this.dispatchEvent(btTaikhoan);
+			}
+			
 		]]>
 	</fx:Script>
 	
@@ -64,6 +71,10 @@
 	</s:Label>
 	<s:Button label="Nhân viên" styleName="childMenu" skinClass="gui.ButtonSkin" 
 			  id="btnhanvien" click="nhanvien_clickHandler(event)">		
+	</s:Button>
+	<s:Button label="Tài khoản" styleName="childMenu" skinClass="gui.ButtonSkin"
+			  id="btTaikhoan" click="btTaikhoan_clickHandler(event)">
+		
 	</s:Button>
 	<s:Label text="Nghỉ phép" styleName="nodeMenu" >		
 	</s:Label>

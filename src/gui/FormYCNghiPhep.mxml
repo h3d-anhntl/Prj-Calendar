@@ -10,6 +10,17 @@
 		</s:VerticalLayout>
 	</s:layout>
 	
+	<fx:Script>
+		<![CDATA[
+			import mx.managers.PopUpManager;
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				PopUpManager.removePopUp(this);
+			}
+		]]>
+	</fx:Script>
+	
 	
 	<s:Label paddingBottom="10" paddingLeft="10" paddingTop="10"
 			 text="Tạo: Thông tin xin nghỉ chi tiết"/>
@@ -80,7 +91,7 @@
 			
 		</s:Label>
 		
-		<s:Button label="Hủy bỏ">
+		<s:Button label="Hủy bỏ" click="button1_clickHandler(event)">
 			
 		</s:Button>	
 	</s:HGroup>

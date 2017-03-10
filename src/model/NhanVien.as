@@ -15,6 +15,9 @@ package model
 		public var ngaytao:Date;
 		public var ngaycapnhat:Date;
 		public var ghichu:String;
+		public var gioitinh:String;
+		public var tinhtranghonnhan:String;
+		public var stknganhang:String;
 		public function NhanVien()
 		{
 		}

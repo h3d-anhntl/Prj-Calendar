@@ -4,7 +4,7 @@
 @namespace gui "gui.*";
 
 .maunen{
-	fillColor:#6600CC;
+	fillColor:#4285F4;
 }
 
 /*.maunenhomnay{
@@ -38,6 +38,16 @@ gui|FormYCNghiPhep s|Label{
 	fontWeight: bold;
 }
 gui|XemYCNghiPopup  s|Label{
+	fontWeight: bold;
+}
+gui|NhanVienNewHeader s|Label{
+	fontWeight: bold;
+}
+gui|NhanVienNewContent s|Label{
+	fontWeight: bold;
+	color: #4C4C4C;
+}
+gui|FormTaoTaiKhoanPopup s|Label{
 	fontWeight: bold;
 }
 

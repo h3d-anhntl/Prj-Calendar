@@ -24,6 +24,7 @@
 	<fx:Script>
 		<![CDATA[
 			import mx.collections.ArrayCollection;
+			import mx.core.FlexGlobals;
 			import mx.core.IFlexDisplayObject;
 			import mx.managers.PopUpManager;
 			
@@ -62,14 +63,14 @@
 			protected function myADG_clickHandler(event:MouseEvent):void
 			{
 				// TODO Auto-generated method stub
-				var popup:IFlexDisplayObject = PopUpManager.createPopUp(this,XemYCNghiPopup,true);
+				var popup:IFlexDisplayObject = PopUpManager.createPopUp(DisplayObject(FlexGlobals.topLevelApplication),XemYCNghiPopup,true);
 				PopUpManager.centerPopUp(popup);
 			}
 			
 			protected function button1_clickHandler(event:MouseEvent):void
 			{
 				// TODO Auto-generated method stub
-				var popup:IFlexDisplayObject = PopUpManager.createPopUp(this,FormYCNghiPhep,true);
+				var popup:IFlexDisplayObject = PopUpManager.createPopUp(DisplayObject(FlexGlobals.topLevelApplication),FormYCNghiPhep,true);
 				PopUpManager.centerPopUp(popup);
 			}
 			
