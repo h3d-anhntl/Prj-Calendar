@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 width="100%" height="100%">
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.core.FlexGlobals;
+			import mx.core.IFlexDisplayObject;
+			import mx.managers.PopUpManager;
+			
+			import model.TaiKhoan;
+			
+			import org.osmf.elements.ManifestLoaderBase;
+			[Bindable]
+			private var dbTaikhoan:ArrayCollection = new ArrayCollection([
+				new TaiKhoan("Nguyễn Văn Thanh","thanhnv","a12345","user","thanhnv@gmail.com"),
+				new TaiKhoan("Nguyễn Thị Hương","huongnt","a12345","user","huongnt@gmail.com"),
+				new TaiKhoan("Phùng Văn Hà","hapv","a12345","user","hapv@gmail.com"),
+				new TaiKhoan("Đỗ Văn Tú","tudv","a12345","user","tudvv@gmail.com"),
+				new TaiKhoan("Nguyễn Vân Anh","anhnv","a12345","user","anhnv@gmail.com")
+				]);
+			
+			protected function myADG_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				/*var popup:IFlexDisplayObject = PopUpManager.createPopUp(this,FormPheDuyetPopup,true);
+				PopUpManager.centerPopUp(popup);*/
+			}
+			
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				var popup:IFlexDisplayObject = PopUpManager.createPopUp(DisplayObject(FlexGlobals.topLevelApplication),FormTaoTaiKhoanPopup,true);
+				PopUpManager.centerPopUp(popup);
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<s:layout>
+		<s:VerticalLayout gap="0">
+			
+		</s:VerticalLayout>
+	</s:layout>
+	
+	<s:HGroup gap="10" padding="10">
+		<s:Button label="Tạo mới" color="red" click="button1_clickHandler(event)">
+			
+		</s:Button>
+		
+		<s:Button label="Xóa" color="red">
+			
+		</s:Button>
+	</s:HGroup>
+	<mx:AdvancedDataGrid id="myADG" 
+						 width="100%" height="100%"
+						 dataProvider="{dbTaikhoan}"
+						 click="myADG_clickHandler(event)">         
+		
+		<mx:columns>
+			<mx:AdvancedDataGridColumn dataField="id" headerText="Nhân viên"/>
+			<mx:AdvancedDataGridColumn dataField="taikhoan" headerText="Tài khoản"/>
+			<mx:AdvancedDataGridColumn dataField="matkhau"
+									   headerText="Mật khẩu"/>
+			<mx:AdvancedDataGridColumn dataField="phanquyen" headerText="Quyền"/>			
+			<mx:AdvancedDataGridColumn dataField="nhanvienid" headerText="Email"/>
+		</mx:columns>
+	</mx:AdvancedDataGrid>
+</s:Group>
