@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:BorderContainer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				   xmlns:s="library://ns.adobe.com/flex/spark" 
+				   xmlns:mx="library://ns.adobe.com/flex/mx"
+				   width="100%" height="100%">
+	
+	<fx:Metadata>
+		[Event(name="clickBt", type="event.StatesEvents")]
+	</fx:Metadata>
+	<s:layout>
+		<s:VerticalLayout paddingTop="35" paddingLeft="35"></s:VerticalLayout>
+	</s:layout>
+	
+	<fx:Script>
+		<![CDATA[
+			import event.StatesEvents;
+			
+			protected function btNV_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				var btNV:StatesEvents= new StatesEvents("clickBt","btNV");
+				this.dispatchEvent(btNV);
+			}
+			
+			protected function btHuy_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				var btHuy:StatesEvents= new StatesEvents("clickBt","btHuy");
+				this.dispatchEvent(btHuy);
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<s:HGroup paddingBottom="20" height="100%" width="100%"
+			  horizontalAlign="left" verticalAlign="middle"
+			  gap="0">		
+		<s:Button label="Nhân Viên" fontSize="20" fontWeight="bold" 
+				   skinClass="gui.ButtonSkin" id="btNV" click="btNV_clickHandler(event)">		
+		</s:Button>
+		<s:Label text="/Mới" fontSize="20" paddingTop="2">
+			
+		</s:Label>
+	</s:HGroup>
+	
+	<s:HGroup width="100%" height="100%" paddingBottom="10" 
+			  horizontalAlign="left" verticalAlign="middle">
+		<s:Button label="Lưu" skinClass="gui.btSkinTaoMoi">
+			
+		</s:Button>
+		<s:Label text="hoặc">
+			
+		</s:Label>
+		<s:Button label="Hủy bỏ" id="btHuy" click="btHuy_clickHandler(event)">
+			
+		</s:Button>
+	</s:HGroup>
+	
+	
+	
+</s:BorderContainer>

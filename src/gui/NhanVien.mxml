@@ -23,14 +23,16 @@
 				
 			}
 			
-			protected function onButtonBarChange(event:IndexChangeEvent):void
+			protected function onButtonBarChange(e:IndexChangeEvent):void
 			{
-				if(event.newIndex == 1){
+				if(e.newIndex == 1){
 					currentState = "nhanVienTable"
 				}else{
 					currentState = "nhanVienListAvatar";
 				}
 			}
+			
+			
 			
 		]]>
 	</fx:Script>

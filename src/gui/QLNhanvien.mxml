@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 width="100%" height="100%" xmlns:gui="gui.*"
+		 currentState="nhanvien"
+		 creationComplete="group1_creationCompleteHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			import event.StatesEvents;
+			
+			protected function group1_creationCompleteHandler(event:FlexEvent):void
+			{		
+				addEventListener('clickBt', nhanvienbt_clickHandler);
+			}
+			
+			protected function nhanvienbt_clickHandler(e:StatesEvents):void
+			{
+				if( currentState == "nhanviennew"){					
+					currentState = "nhanvien";
+				}
+				else{
+					if(e.idBt == "bttaoNV"){
+						currentState = "nhanviennew";
+					}
+					else if(e.idBt == "btHuy"){
+						currentState = "nhanvien";
+					}
+					else if(e.idBt == "btNV"){
+						currentState = "nhanvien";
+					}	
+				}
+				
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<s:states>
+		<s:State name="nhanvien" />
+		<s:State name="nhanviennew"/>
+	</s:states>
+	
+	<gui:NhanVien id="nhanvienbt" width="100%" height="100%" includeIn="nhanvien" >
+		
+	</gui:NhanVien>
+	
+	<gui:NhanVienNew id="nhanviennewbt" width="100%" height="100%" includeIn="nhanviennew">
+		
+	</gui:NhanVienNew>
+</s:Group>

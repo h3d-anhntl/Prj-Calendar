@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 width="100%" height="100%" xmlns:ns="http://f-project.net/xmlns/fprj-ui/2015" xmlns:gui="gui.*">
+	<fx:Script>
+		<![CDATA[
+			
+			
+		]]>
+	</fx:Script>
+	
+	<s:Scroller width="100%" height="100%" focusEnabled="false"
+				hasFocusableChildren="true">
+		<s:Group  width="100%" height="100%" >
+			<s:layout>
+				<s:VerticalLayout gap="15" paddingLeft="145">
+				</s:VerticalLayout>
+			</s:layout>
+			
+			<!--Phần thông tin tổng quát-->
+			<s:HGroup width="90%">
+				<s:Group width="30%">
+					
+				</s:Group>
+				<s:VGroup width="70%" gap="10">
+					<s:Label text="Họ và tên">
+						
+					</s:Label>
+					<s:TextInput width="400">
+						
+					</s:TextInput>
+					<s:Label text="Tên viết tắt">
+						
+					</s:Label>
+					<s:TextInput width="400">
+						
+					</s:TextInput>
+					<s:Label text="Email công việc">
+						
+					</s:Label>
+					<s:TextInput width="400">
+						
+					</s:TextInput>
+					<s:Label text="Điện thoại">
+						
+					</s:Label>
+					<s:TextInput width="400">
+						
+					</s:TextInput>
+				</s:VGroup>
+			</s:HGroup>
+			
+			<!--Phần thông tin chi tiết-->
+			<s:VGroup width="100%" gap="0">	
+				<s:HGroup width="90%">
+					<s:TabBar  width="60%" depth="1" selectedIndex="0" id="slidingTabs"
+								change="viewStackDemo.selectedChild = slidingTabs.selectedItem.element">	
+						
+							<s:ArrayCollection>						
+								<fx:Object label="Thông tin cơ bản" element="{elementA}" />
+								<fx:Object label="Thông tin cá nhân" element="{elementB}" />
+								<fx:Object label="Thiết lập tài khoản" element="{elementC}" />
+								<fx:Object label="Thiết lập lịch làm việc" element="{elementD}" />
+							</s:ArrayCollection>
+					</s:TabBar>
+					
+					
+				</s:HGroup>
+				<s:Group width="90%">
+					<s:layout>
+						<s:VerticalLayout gap="0">
+							
+						</s:VerticalLayout>
+					</s:layout>
+					<ns:ViewStack height="100%" width="100%" depth="0"  
+								  backgroundColor="#FFFFFF" id="viewStackDemo"
+								  borderVisible="true" borderAlpha=".2" minHeight="245">
+						<!--Phần Thông tin cơ bản-->
+						<s:SkinnableContainer id="elementA">
+							<s:HGroup paddingLeft="25" paddingTop="35">
+								<s:VGroup paddingRight="30" gap="20" verticalAlign="middle" paddingTop="10">
+									<s:Label text="Phòng ban"></s:Label>
+									<s:Label text="Chức danh công việc" paddingTop="5"></s:Label>
+									<s:Label text="Quản lý bởi"></s:Label>
+								</s:VGroup>
+								<mx:VRule height="100">
+									
+								</mx:VRule>
+								<s:VGroup paddingLeft="30" gap="15">
+									<s:ComboBox width="200">
+										<s:dataProvider>
+											<s:ArrayList>
+												<fx:String>Web</fx:String>
+												<fx:String>Mobie</fx:String>
+												<fx:String>Tích hợp</fx:String>
+											</s:ArrayList>
+										</s:dataProvider>
+									</s:ComboBox>
+									<s:ComboBox width="200">
+										<s:dataProvider>
+											<s:ArrayList>
+												<fx:String>Quản lý Web</fx:String>
+												<fx:String>Quản lý Mobie</fx:String>
+												<fx:String>Quản lý Tích hợp</fx:String>
+											</s:ArrayList>
+										</s:dataProvider>
+									</s:ComboBox>
+									<s:ComboBox width="200">
+										<s:dataProvider>
+											<s:ArrayList>
+												<fx:String>TuDV</fx:String>
+												<fx:String>Chung</fx:String>
+												<fx:String>ThanhPV</fx:String>
+											</s:ArrayList>
+										</s:dataProvider>
+									</s:ComboBox>
+								</s:VGroup>							
+							</s:HGroup>												
+						</s:SkinnableContainer>
+						
+						<!--Phần Thông tin cá nhân-->
+						<s:SkinnableContainer id="elementB">
+							<s:HGroup paddingLeft="25" paddingTop="35" gap="40">
+								<s:HGroup paddingRight="40">
+									<s:VGroup paddingRight="20" gap="30" verticalAlign="middle" paddingTop="10">
+										<s:Label text="Số CMTND" />
+										<s:Label text="Số Tài khoản ngân hàng" />
+										<s:Label text="Địa chỉ" />
+									</s:VGroup>
+									
+									<mx:VRule height="110">
+										
+									</mx:VRule>
+									
+									<s:VGroup gap="20" paddingLeft="10">
+										<s:TextInput width="200">
+											
+										</s:TextInput>
+										<s:TextInput  width="200">
+											
+										</s:TextInput>
+										<s:TextInput  width="200">
+											
+										</s:TextInput>
+									</s:VGroup>
+								</s:HGroup>
+								<s:HGroup >
+									<s:VGroup paddingRight="20" gap="30" verticalAlign="middle" paddingTop="10">
+										<s:Label text="Ngày sinh" />
+										<s:Label text="Giới tính" />
+										<s:Label text="Tình trạng hôn nhân" />
+									</s:VGroup>
+									
+									<mx:VRule height="110">
+										
+									</mx:VRule>
+									
+									<s:VGroup gap="20" paddingLeft="10">
+										<mx:DateField  width="225">
+											
+										</mx:DateField>
+										<s:ComboBox  width="200">
+											<s:dataProvider>
+												<s:ArrayList>
+													<fx:String>Nam</fx:String>
+													<fx:String>Nữ</fx:String>
+												</s:ArrayList>
+											</s:dataProvider>
+										</s:ComboBox>
+										<s:ComboBox  width="200">
+											<s:dataProvider>
+												<s:ArrayList>
+													<fx:String>Chưa kết hôn</fx:String>
+													<fx:String>Đã kết hôn</fx:String>
+													<fx:String>Đang độc thân</fx:String>
+												</s:ArrayList>
+											</s:dataProvider>
+										</s:ComboBox>
+									</s:VGroup>
+								</s:HGroup>
+							</s:HGroup>
+							
+						</s:SkinnableContainer>
+						
+						<!--Phần Đăng ký tài khoản-->
+						<s:SkinnableContainer id="elementC">
+							<s:HGroup paddingLeft="25" paddingTop="25">
+								<s:VGroup paddingRight="30" gap="20" verticalAlign="middle" paddingTop="10">
+									<s:Label text="Tài khoản" />
+									<s:Label text="Mật khẩu" />
+									<s:Label text="Ghi chú" />
+								</s:VGroup>
+								
+								<mx:VRule height="170">									
+								</mx:VRule>
+								
+								<s:VGroup gap="10" paddingLeft="20">
+									<s:TextInput width="300">
+										
+									</s:TextInput>
+									<s:TextInput  width="300">
+										
+									</s:TextInput>
+									<s:TextArea width="300" height="100">
+										
+									</s:TextArea>
+								</s:VGroup>
+							</s:HGroup>
+						</s:SkinnableContainer>
+						
+						<!--Thiết lập lịch làm việc-->
+						<s:SkinnableContainer id="elementD">
+							<gui:FormDKLich width="100%" height="100%">
+								
+							</gui:FormDKLich>
+						</s:SkinnableContainer>
+					</ns:ViewStack>
+					
+					
+				</s:Group>
+			</s:VGroup>
+		</s:Group>		
+	</s:Scroller>
+</s:Group>
