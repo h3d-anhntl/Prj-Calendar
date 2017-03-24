@@ -1,4 +1,4 @@
-package event
+package net.prjcanlendar.event
 {
 	import flash.events.Event;
 

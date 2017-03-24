@@ -2,9 +2,9 @@
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 xmlns:mx="library://ns.adobe.com/flex/mx"
-		 xmlns:g="gui.*"
+		 xmlns:gui="net.prjcanlendar.gui.*"
 		 width="100%" height="100%"
-		 creationComplete="group1_creationCompleteHandler(event)">
+		 creationComplete="group1_creationCompleteHandler(event)" xmlns:component="net.prjcanlendar.component.*">
 	
 	<fx:Script>
 		<![CDATA[
@@ -75,7 +75,7 @@
 	<s:VGroup width="100%"  gap="0">
 		
 		<s:HGroup width="100%" height="60"  id="headerTable" gap="0" paddingLeft="50">
-			<s:DataGroup id="thuheader" itemRenderer="gui.ThuHeader" width="100%" height="100%">
+			<s:DataGroup id="thuheader" itemRenderer="net.prjcanlendar.ItemRender.ThuHeader" width="100%" height="100%">
 				<s:layout>
 					<s:HorizontalLayout gap="0"/>
 				</s:layout>
@@ -84,8 +84,8 @@
 		</s:HGroup>
 		
 		<s:HGroup gap="0" height="50" width="100%">
-			<g:CaBorderContainer lbCa="Sáng"  width="50" />
-			<s:DataGroup id="sang" itemRenderer="gui.CheckBoxItemRender" width="100%" height="100%">
+			<component:CaBorderContainer lbCa="Sáng"  width="50" />
+			<s:DataGroup id="sang" itemRenderer="net.prjcanlendar.ItemRender.CheckBoxItemRender" width="100%" height="100%">
 				<s:layout>
 					<s:HorizontalLayout gap="0"/>
 				</s:layout>
@@ -93,8 +93,8 @@
 		</s:HGroup>
 		
 		<s:HGroup gap="0" height="50" width="100%">
-			<g:CaBorderContainer lbCa="Chiều" width="50" />
-			<s:DataGroup id="chieu" itemRenderer="gui.CheckBoxItemRender" width="100%" height="100%">
+			<component:CaBorderContainer lbCa="Chiều" width="50" />
+			<s:DataGroup id="chieu" itemRenderer="net.prjcanlendar.ItemRender.CheckBoxItemRender" width="100%" height="100%">
 				<s:layout>
 					<s:HorizontalLayout gap="0"/>
 				</s:layout>

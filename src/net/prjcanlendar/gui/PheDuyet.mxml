@@ -3,7 +3,7 @@
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 xmlns:mx="library://ns.adobe.com/flex/mx"
 		 width="100%" height="100%"
-		 xmlns:g="gui.*">
+		 xmlns:gui="net.prjcanlendar.gui.*" xmlns:PheDuyet="net.prjcanlendar.component.PheDuyet.*">
 	
 	<s:layout>
 		<s:VerticalLayout>
@@ -12,19 +12,16 @@
 	</s:layout>
 	
 	<s:Group width="100%">
-		<g:YCNghiPhepHeader width="100%" >
+		<PheDuyet:PheDuyetHeader width="100%">
 			
-		</g:YCNghiPhepHeader>
+		</PheDuyet:PheDuyetHeader>
+		
 	</s:Group>
 	
 	<s:Group width="100%">
-		<s:layout>
-			<s:HorizontalLayout paddingTop="30" paddingLeft="100">
-				
-			</s:HorizontalLayout>
-		</s:layout>
-		<g:FormYCNghiPhep width="60%">
+		<PheDuyet:PheDuyetContent>
 			
-		</g:FormYCNghiPhep>
+		</PheDuyet:PheDuyetContent>
 	</s:Group>
+	
 </s:Group>

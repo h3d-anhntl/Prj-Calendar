@@ -2,10 +2,19 @@
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 xmlns:mx="library://ns.adobe.com/flex/mx"
-		 width="100%" height="100%" xmlns:ns="http://f-project.net/xmlns/fprj-ui/2015" xmlns:gui="gui.*">
+		 width="100%" height="100%" 
+		 xmlns:ns="http://f-project.net/xmlns/fprj-ui/2015" 
+		 xmlns:gui="net.prjcanlendar.gui.*" creationComplete="group1_creationCompleteHandler(event)" xmlns:form="net.prjcanlendar.form.*">
 	<fx:Script>
 		<![CDATA[
+			import mx.events.FlexEvent;
 			
+			
+			protected function group1_creationCompleteHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				slidingTabs.selectedIndex = 0;
+			}
 			
 		]]>
 	</fx:Script>
@@ -54,7 +63,7 @@
 			<!--Phần thông tin chi tiết-->
 			<s:VGroup width="100%" gap="0">	
 				<s:HGroup width="90%">
-					<s:TabBar  width="60%" depth="1" selectedIndex="0" id="slidingTabs"
+					<s:TabBar  width="60%" depth="1" id="slidingTabs" 
 								change="viewStackDemo.selectedChild = slidingTabs.selectedItem.element">	
 						
 							<s:ArrayCollection>						
@@ -211,9 +220,9 @@
 						
 						<!--Thiết lập lịch làm việc-->
 						<s:SkinnableContainer id="elementD">
-							<gui:FormDKLich width="100%" height="100%">
+							<form:FormDKLich width="100%" height="100%">
 								
-							</gui:FormDKLich>
+							</form:FormDKLich>
 						</s:SkinnableContainer>
 					</ns:ViewStack>
 					

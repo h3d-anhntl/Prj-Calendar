@@ -5,7 +5,7 @@
 				   width="100%" height="100%">
 	
 	<fx:Metadata>
-		[Event(name="clickBt", type="event.StatesEvents")]
+		[Event(name="clickBt", type="net.prjcanlendar.event.StatesEvents")]
 	</fx:Metadata>
 	<s:layout>
 		<s:VerticalLayout paddingTop="35" paddingLeft="35"></s:VerticalLayout>
@@ -15,7 +15,7 @@
 		<![CDATA[
 			import spark.events.IndexChangeEvent;
 			
-			import event.StatesEvents;
+			import net.prjcanlendar.event.StatesEvents;
 			protected function buttonbar1_changeHandler(event:IndexChangeEvent):void
 			{			
 				dispatchEvent(event);
@@ -37,7 +37,7 @@
 	
 	<s:HGroup width="100%" height="100%" paddingBottom="10">
 		<s:Group width="90%">
-			<s:Button label="Tạo mới" id="bttaoNV" skinClass="gui.btSkinTaoMoi" click="button1_clickHandler(event)">
+			<s:Button label="Tạo mới" id="bttaoNV" skinClass="net.prjcanlendar.skin.btSkinTaoMoi" click="button1_clickHandler(event)">
 				
 			</s:Button>
 		</s:Group>

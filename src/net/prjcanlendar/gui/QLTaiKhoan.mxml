@@ -3,7 +3,7 @@
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 xmlns:mx="library://ns.adobe.com/flex/mx"
 		 width="100%" height="100%"
-		 xmlns:g="gui.*">
+		 xmlns:gui="net.prjcanlendar.gui.*" xmlns:TaiKhoan="net.prjcanlendar.component.TaiKhoan.*">
 	
 	<s:layout>
 		<s:VerticalLayout>
@@ -12,16 +12,14 @@
 	</s:layout>
 	
 	<s:Group width="100%">
-		<g:PheDuyetHeader width="100%">
+		<TaiKhoan:TaiKhoanHeader width="100%">
 			
-		</g:PheDuyetHeader>
-		
+		</TaiKhoan:TaiKhoanHeader>
 	</s:Group>
 	
 	<s:Group width="100%">
-		<g:PheDuyetContent>
+		<TaiKhoan:TaiKhoanContent width="100%">
 			
-		</g:PheDuyetContent>
+		</TaiKhoan:TaiKhoanContent>
 	</s:Group>
-	
 </s:Group>
