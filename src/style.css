@@ -5,6 +5,7 @@
 @namespace gui1 "net.prjcanlendar.gui.*";
 @namespace form "net.prjcanlendar.form.*";
 @namespace NhanVien "net.prjcanlendar.component.NhanVien.*";
+@namespace NVien "net.prjcanlendar.component.NVien.*";
 
 .maunen{
 	fillColor:#4285F4;
@@ -43,10 +44,10 @@ form|FormYCNghiPhep s|Label{
 form|XemYCNghiPopup  s|Label{
 	fontWeight: bold;
 }
-NhanVien|NhanVienNewHeader s|Label{
+NVien|NhanVienNewHeader s|Label{
 	fontWeight: bold;
 }
-NhanVien|NhanVienNewContent s|Label{
+NVien|NhanVienNewContent s|Label{
 	fontWeight: bold;
 	color: #4C4C4C;
 }
