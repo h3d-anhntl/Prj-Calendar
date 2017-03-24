@@ -4,7 +4,8 @@
 		 xmlns:mx="library://ns.adobe.com/flex/mx"
 		 width="100%" height="100%" xmlns:gui="gui.*"
 		 currentState="nhanvien"
-		 creationComplete="group1_creationCompleteHandler(event)">
+		 creationComplete="group1_creationCompleteHandler(event)"
+		 show="group1_showHandler(event)" activate="group1_activateHandler(event)" deactivate="group1_deactivateHandler(event)" addedToStage="group1_addedToStageHandler(event)">
 	<fx:Script>
 		<![CDATA[
 			import mx.events.FlexEvent;
@@ -33,6 +34,39 @@
 					}	
 				}
 				
+			}
+			
+			protected function group1_showHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				var a:int;
+				a = 1;
+				a++;
+			}
+			
+			protected function group1_activateHandler(event:Event):void
+			{
+				// TODO Auto-generated method stub
+				var a:int;
+				a= 0;
+				a++;
+				
+			}
+			
+			protected function group1_deactivateHandler(event:Event):void
+			{
+				// TODO Auto-generated method stub
+				var a:int;
+				a= 0;
+				a++;
+			}
+			
+			protected function group1_addedToStageHandler(event:Event):void
+			{
+				// TODO Auto-generated method stub
+				var a:int;
+				a= 0;
+				a++;
 			}
 			
 		]]>

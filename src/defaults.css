@@ -1,0 +1,9 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+@namespace gui "gui.*";
+
+gui|CalendarView
+{
+	skinClass:ClassReference("gui.CalendarViewSkin");
+}
