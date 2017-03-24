@@ -3,7 +3,7 @@
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 xmlns:mx="library://ns.adobe.com/flex/mx"
 		 width="100%" height="100%"
-		 xmlns:gui="net.prjcanlendar.gui.*" xmlns:BanTin="net.prjcanlendar.component.BanTin.*">
+		 xmlns:g="gui.*">
 	
 	<s:layout>
 		<s:VerticalLayout>
@@ -11,23 +11,21 @@
 		</s:VerticalLayout>
 	</s:layout>
 	
-	<s:Group width="100%">
-		<BanTin:BanTinHeader width="100%">
+	<!--<s:Group width="100%" height="100%">
+		<g:BanTinHeader width="100%" visible="false" includeInLayout="false">
 			
-		</BanTin:BanTinHeader>
-	</s:Group>
-	<s:Group width="100%">
+		</g:BanTinHeader>
+	</s:Group>-->
+	<s:Group width="100%" height="100%">
 		<s:layout>
 			<s:HorizontalLayout paddingLeft="10">
 				
 			</s:HorizontalLayout>
 		</s:layout>
 		
-		<s:Group width="80%">
-			<BanTin:BanTinTuan width="100%">
-				
-			</BanTin:BanTinTuan>
-			
+		<s:Group width="80%" height="100%">
+			<!--<g:BanTinTuan width="100%" visible="false" includeInLayout="false"/>-->
+			<g:CalendarView width="100%" height="100%"/>
 		</s:Group>
 		
 	</s:Group>

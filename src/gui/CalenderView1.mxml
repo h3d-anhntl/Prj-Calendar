@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 xmlns:g="gui.*"
+		 width="100%" height="100%"
+		 xmlns:ns="http://f-project.net/xmlns/fprj/2013" 
+		 xmlns:ns1="http://f-project.net/xmlns/fprj-ui/2015">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			import spark.events.IndexChangeEvent;
+			
+			import model.CalendarItem;
+			import model.NhanVien;
+			
+			import net.fproject.calendar.components.DateInterval;
+			import net.fproject.calendar.events.CalendarEvent;
+			import net.fproject.core.TimeUnit;
+			import net.fproject.ui.misc.Alert;
+			
+			public var nv:model.NhanVien = new model.NhanVien;
+			
+			protected function todayButton_clickHandler(event:MouseEvent):void
+			{
+				calendarControl.referenceDate = new Date();
+				calendarControl.dateInterval = DateInterval.DAY; 
+			}
+			
+			protected function prevButton_clickHandler(event:MouseEvent):void
+			{
+				calendarControl.previousRange();
+			}
+			
+			protected function nextButton_clickHandler(event:MouseEvent):void
+			{
+				calendarControl.nextRange();
+			}
+			
+			protected function dateIntervalButtonBar_changeHandler(event:IndexChangeEvent):void
+			{
+				if (calendarControl.referenceDate == null) {          
+					calendarControl.referenceDate = calendarControl.endDate;              
+				}
+				if (event.newIndex != -1) {
+					calendarControl.dateInterval = dateIntervalButtonBar.dataProvider.getItemAt(event.newIndex).value.toString();
+				}
+			}
+			
+			protected function calendarControl_visibleTimeRangeChangedHandler(event:CalendarEvent):void
+			{
+				// TODO Auto-generated method stub
+				var e:Date = calendarControl.calendar.dateAddByTimeUnit(calendarControl.renderData.endDisplayedDate, TimeUnit.DAY, 1);
+				rangeLabel.text = calendarControl.getTimeRangeLabel(null, calendarControl.renderData.startDisplayedDate, e);
+				
+				// Update the date interval button bar
+				var dateInterval:String = calendarControl.renderData.dateInterval;
+				
+				if (dateInterval == DateInterval.DAY)
+					dateIntervalButtonBar.selectedIndex = 0;
+				else if (dateInterval == DateInterval.WEEK)
+					dateIntervalButtonBar.selectedIndex = 1;
+				else if (dateInterval == DateInterval.MONTH)
+					dateIntervalButtonBar.selectedIndex = 2;
+				
+				/*if (_dateChooserHandler == null)
+				{
+					_dateChooserHandler = new DateChooserHandler(
+						calendarControl, monthsPanel.leftDateChooser, monthsPanel.rightDateChooser);
+				}*/
+				
+				var duration:int = calendarControl.calendar.getDays(event.startTime, event.endTime);
+				calendarControl.setStyle("showDataGroupDuringScrollAnimation", duration <= 2);
+			}
+			
+			protected function calendarControl_doubleClickHandler(event:MouseEvent):void
+			{
+				Alert.show("calendarControl_doubleClickHandler");
+				createNewEventFromSelection(calendarControl.timeRangeSelection);
+			}
+			
+			private function createNewEventFromSelection(selection:Vector.<Date>, summary:String=null, 
+														 minimalDuration:Boolean=false):void 
+			{                
+				if (selection != null) {
+					var startTime:Date = selection[0] as Date;
+					var endTime:Date = selection[1] as Date;
+					
+					if (minimalDuration) {                                    
+						var nextStartTime:Date = calendarControl.calendar.dateAddByTimeUnit(startTime, TimeUnit.HOUR, 1);
+						
+						if (endTime < nextStartTime) {
+							endTime = nextStartTime;
+						}
+					}
+					calendarControl.timeRangeSelection = null;
+					createNewEvent(startTime, endTime, summary, calendarControl.timeRangeSelectionCalendar);
+				} 
+			}
+			
+			private function createNewEvent(startTime:Date, endTime:Date, label:String=null, calendar:Object=null):void 
+			{
+				
+				if (label == null) {
+					label = resourceManager.getString("myhome", "myhome.default.summary");
+				}
+				
+				var calendarId:String
+				
+				var addedItem:CalendarItem = new CalendarItem();
+				addedItem.startTime = startTime;
+				addedItem.endTime = endTime;
+				addedItem.label = label;
+				
+				calendarControl.dataProvider.addItem(addedItem); 
+				calendarControl.selectedItem = addedItem;
+			}
+			
+			protected function calendarControl_creationCompleteHandler(event:FlexEvent):void
+			{
+				calendarControl.grid.addEventListener(MouseEvent.DOUBLE_CLICK,calendarControl_doubleClickHandler);
+				Alert.show("calendarControl_creationCompleteHandler");
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<fx:Component className="RightArrowButtonSkin">
+			<ns1:TriangleArrowButtonSkin arrowRotation="180"/>
+		</fx:Component>
+		<fx:Component className="LeftArrowButtonSkin">
+			<ns1:TriangleArrowButtonSkin arrowRotation="0"/>
+		</fx:Component>
+	</fx:Declarations>
+		
+	<s:VGroup width="100%" height="100%" gap="0">
+		
+		<!--Toolbar-->
+		
+		<ns1:Toolbar id="myHomeToolbar" left="45" right="0" top="7" height="30" width="100%"
+					paddingLeft="10"
+					borderVisible="false" backgroundFillColors="{[0xF0F0F0]}">
+			<ns1:layout>
+				<s:HorizontalLayout verticalAlign="middle"/>
+			</ns1:layout>
+			
+			<s:HGroup id="timeHgroup" verticalAlign="middle" paddingLeft="2">
+				<ns1:ToolbarButton id="todayButton" chromeColor="#FFF0B3" click="todayButton_clickHandler(event)"
+								  label="Hôm nay"/>
+				<!--- @private--> 
+				<ns1:ToolbarButton id="prevButton" height="21" width="26"
+								  skinClass="gui.LeftArrowButtonSkin"
+								  click="prevButton_clickHandler(event)"/>
+				
+				<!-- Currently displayed time interval--> 
+				<s:Label id="rangeLabel" fontWeight="bold" 
+						 textAlign="left"
+						 verticalAlign="middle"
+						 maxDisplayedLines="1"
+						 paddingTop="3" 
+						 height="100%" width="100%" />
+				
+				<!--- @private--> 
+				<ns1:ToolbarButton id="nextButton" height="21" width="26"
+								  skinClass="gui.RightArrowButtonSkin"
+								  />
+			</s:HGroup>
+			
+			<s:Spacer width="100%"/>
+			
+			<ns1:ButtonBar id="dateIntervalButtonBar" requireSelection="true" labelField="label" selectedIndex="3"
+						   change="dateIntervalButtonBar_changeHandler(event)">
+				<ns1:dataProvider>
+					<s:ArrayCollection>
+						<fx:Object label="Ngày" value="day"/>
+						<fx:Object label="Tuần" value="week"/>
+						<fx:Object label="Tháng" value="month"/>
+					</s:ArrayCollection>
+				</ns1:dataProvider>
+			</ns1:ButtonBar>
+		</ns1:Toolbar>
+		
+		<!--Table danh sách điểm danh nhân viên-->
+		
+		<s:VGroup id="calendarControlGroup" width="100%" height="100%" horizontalAlign="right">
+			<!-- The calendar has a custom skin with navigation buttons and custom sub components skins & renderers -->
+			<ns:Calendar id="calendarControl" width="100%" height="100%"		
+						   dateInterval="week"
+						   maxNumColumns="14" maxNumRows="8" scrollStep="2"
+						   minTimeOfDay="0am" maxTimeOfDay="12pm"
+						   showItemIndicators="true" styleName="myhomeCalendar" minWidth="500"
+						   visibleTimeRangeChanged="calendarControl_visibleTimeRangeChangedHandler(event)"
+						   creationComplete="calendarControl_creationCompleteHandler(event)"/>   
+			
+		</s:VGroup>
+		
+	</s:VGroup>
+	
+</s:Group>

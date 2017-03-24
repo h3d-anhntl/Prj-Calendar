@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:ns="http://f-project.net/xmlns/fprj-ui/2015">
+	<!-- host component -->
+	<fx:Metadata>
+		[HostComponent("gui.CalendarView")]
+	</fx:Metadata>
+	
+	<fx:Declarations>
+		<fx:Component className="RightArrowButtonSkin">
+			<ns:TriangleArrowButtonSkin arrowRotation="180"/>
+		</fx:Component>
+		<fx:Component className="LeftArrowButtonSkin">
+			<ns:TriangleArrowButtonSkin arrowRotation="0"/>
+		</fx:Component>
+	</fx:Declarations>
+	
+	<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			 xmlns:s="library://ns.adobe.com/flex/spark" 
+			 xmlns:mx="library://ns.adobe.com/flex/mx"
+			 xmlns:g="gui.*"
+			 width="100%" height="100%"
+			 xmlns:ns="http://f-project.net/xmlns/fprj/2013" 
+			 xmlns:ns1="http://f-project.net/xmlns/fprj-ui/2015">
+		
+		<s:VGroup width="100%" height="100%" gap="0">
+			
+			<!--Toolbar-->
+			
+			<ns1:Toolbar id="myHomeToolbar" left="45" right="0" top="7" height="30" width="100%"
+						 paddingLeft="10"
+						 borderVisible="false" backgroundFillColors="{[0xF0F0F0]}">
+				<ns1:layout>
+					<s:HorizontalLayout verticalAlign="middle"/>
+				</ns1:layout>
+				
+				<s:HGroup id="timeHgroup" verticalAlign="middle" paddingLeft="2">
+					<ns1:ToolbarButton id="todayButton" chromeColor="#FFF0B3"
+									   label="Hôm nay"/>
+					<!--- @private--> 
+					<ns1:ToolbarButton id="prevButton" height="21" width="26"
+									   skinClass="gui.LeftArrowButtonSkin"/>
+					
+					<!-- Currently displayed time interval--> 
+					<s:Label id="rangeLabel" fontWeight="bold" 
+							 textAlign="left"
+							 verticalAlign="middle"
+							 maxDisplayedLines="1"
+							 paddingTop="3" 
+							 height="100%" width="100%" />
+					
+					<!--- @private--> 
+					<ns1:ToolbarButton id="nextButton" height="21" width="26"
+									   skinClass="gui.RightArrowButtonSkin"/>
+				</s:HGroup>
+				
+				<s:Spacer width="100%"/>
+				
+				<ns1:ButtonBar id="dateIntervalButtonBar" requireSelection="true" labelField="label" selectedIndex="3">
+					<ns1:dataProvider>
+						<s:ArrayCollection>
+							<fx:Object label="Ngày" value="day"/>
+							<fx:Object label="Tuần" value="week"/>
+							<fx:Object label="Tháng" value="month"/>
+						</s:ArrayCollection>
+					</ns1:dataProvider>
+				</ns1:ButtonBar>
+			</ns1:Toolbar>
+			
+			<!--Table danh sách điểm danh nhân viên-->
+			
+			<s:VGroup id="calendarControlGroup" width="100%" height="100%" horizontalAlign="right">
+				<!-- The calendar has a custom skin with navigation buttons and custom sub components skins & renderers -->
+				<ns:Calendar id="calendarControl" width="100%" height="100%"		
+							 dateInterval="week"
+							 doubleClickEnabled="true"
+							 maxNumColumns="14" maxNumRows="8" scrollStep="2"
+							 minTimeOfDay="0am" maxTimeOfDay="12pm"
+							 showItemIndicators="true" minWidth="500">
+					<ns:dataDescriptor>
+						<ns:CalendarDataDescriptor labelField="name"/>
+					</ns:dataDescriptor>
+				</ns:Calendar>  
+			</s:VGroup>
+		</s:VGroup>
+		
+	</s:Group>
+</s:Skin>
