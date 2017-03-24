@@ -2,6 +2,9 @@
 @namespace s "library://ns.adobe.com/flex/spark";
 @namespace mx "library://ns.adobe.com/flex/mx";
 @namespace gui "gui.*";
+@namespace gui1 "net.prjcanlendar.gui.*";
+@namespace form "net.prjcanlendar.form.*";
+@namespace NhanVien "net.prjcanlendar.component.NhanVien.*";
 
 .maunen{
 	fillColor:#4285F4;
@@ -11,22 +14,22 @@
 	fillColor:#FF99FF;
 }*/
 
-gui|Header s|Label{
+gui1|Header s|Label{
 	fontWeight: bold;
 	color: #FFFFFF;
 }
 
-gui|Menu s|Label{	
+gui1|Menu s|Label{	
 	fontSize: 15px;
 	fontFamily: Arial;
 	
 }
-gui|Menu .nodeMenu {
+gui1|Menu .nodeMenu {
 	fontWeight: bold;
 	paddingLeft: 10px;
 }
 
-gui|Menu .childMenu{
+gui1|Menu .childMenu{
 	paddingLeft: 20px;
 }
 
@@ -34,20 +37,20 @@ s|List.noneBorder{
 	borderVisible:"false" 
 }
 
-gui|FormYCNghiPhep s|Label{
+form|FormYCNghiPhep s|Label{
 	fontWeight: bold;
 }
-gui|XemYCNghiPopup  s|Label{
+form|XemYCNghiPopup  s|Label{
 	fontWeight: bold;
 }
-gui|NhanVienNewHeader s|Label{
+NhanVien|NhanVienNewHeader s|Label{
 	fontWeight: bold;
 }
-gui|NhanVienNewContent s|Label{
+NhanVien|NhanVienNewContent s|Label{
 	fontWeight: bold;
 	color: #4C4C4C;
 }
-gui|FormTaoTaiKhoanPopup s|Label{
+form|FormTaoTaiKhoanPopup s|Label{
 	fontWeight: bold;
 }
 
