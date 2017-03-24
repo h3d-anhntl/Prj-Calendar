@@ -3,14 +3,14 @@
 			   xmlns:s="library://ns.adobe.com/flex/spark" 
 			   xmlns:mx="library://ns.adobe.com/flex/mx" 
 			   xmlns:core="net.fproject.gui.component.*"
-			   xmlns:gui="gui.*" currentState="bantin"
-			   xmlns:even="event.*">
+			   xmlns:gui="net.prjcanlendar.gui.*" currentState="bantin"
+			   xmlns:event="net.prjcanlendar.event.*">
 	
 	<fx:Style source="style.css" />
 	
 	<fx:Script>
 		<![CDATA[
-			import event.StatesEvents;
+			import net.prjcanlendar.event.StatesEvents;
 			/*
 			public static function getTopAplication():DisplayObject{
 				return this;
