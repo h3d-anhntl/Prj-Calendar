@@ -6,6 +6,7 @@ package model
 		public var hovaten:String;
 		public var tenviettat:String;
 		public var email:String;
+		public var avatar:String;
 		public var facebook:String;
 		public var diachi:String;
 		public var sodienthoai:String;

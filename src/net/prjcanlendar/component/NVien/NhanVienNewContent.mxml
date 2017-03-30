@@ -4,7 +4,7 @@
 		 xmlns:mx="library://ns.adobe.com/flex/mx"
 		 width="100%" height="100%" 
 		 xmlns:ns="http://f-project.net/xmlns/fprj-ui/2015" 
-		 xmlns:gui="net.prjcanlendar.gui.*" creationComplete="group1_creationCompleteHandler(event)" xmlns:form="net.prjcanlendar.form.*">
+		 xmlns:gui="net.prjcanlendar.gui.*" creationComplete="group1_creationCompleteHandler(event)" xmlns:form="net.prjcanlendar.component.form.*">
 	<fx:Script>
 		<![CDATA[
 			import mx.events.FlexEvent;
@@ -67,10 +67,10 @@
 								change="viewStackDemo.selectedChild = slidingTabs.selectedItem.element">	
 						
 							<s:ArrayCollection>						
-								<fx:Object label="Thông tin cơ bản" element="{elementA}" />
-								<fx:Object label="Thông tin cá nhân" element="{elementB}" />
-								<fx:Object label="Thiết lập tài khoản" element="{elementC}" />
-								<fx:Object label="Thiết lập lịch làm việc" element="{elementD}" />
+								<fx:Object label="Thông tin cơ bản" element="{viewTTCB}" />
+								<fx:Object label="Thông tin cá nhân" element="{viewTTCN}" />
+								<fx:Object label="Thiết lập tài khoản" element="{viewDKTK}" />
+								<fx:Object label="Thiết lập lịch làm việc" element="{viewLLV}" />
 							</s:ArrayCollection>
 					</s:TabBar>
 					
@@ -82,11 +82,11 @@
 							
 						</s:VerticalLayout>
 					</s:layout>
-					<ns:ViewStack height="100%" width="100%" depth="0"  
+					<ns:ViewStack height="100%" width="100%" depth="0"   selectedIndex="0"
 								  backgroundColor="#FFFFFF" id="viewStackDemo"
 								  borderVisible="true" borderAlpha=".2" minHeight="245">
 						<!--Phần Thông tin cơ bản-->
-						<s:SkinnableContainer id="elementA">
+						<s:SkinnableContainer id="viewTTCB">
 							<s:HGroup paddingLeft="25" paddingTop="35">
 								<s:VGroup paddingRight="30" gap="20" verticalAlign="middle" paddingTop="10">
 									<s:Label text="Phòng ban"></s:Label>
@@ -129,7 +129,7 @@
 						</s:SkinnableContainer>
 						
 						<!--Phần Thông tin cá nhân-->
-						<s:SkinnableContainer id="elementB">
+						<s:SkinnableContainer id="viewTTCN">
 							<s:HGroup paddingLeft="25" paddingTop="35" gap="40">
 								<s:HGroup paddingRight="40">
 									<s:VGroup paddingRight="20" gap="30" verticalAlign="middle" paddingTop="10">
@@ -193,7 +193,7 @@
 						</s:SkinnableContainer>
 						
 						<!--Phần Đăng ký tài khoản-->
-						<s:SkinnableContainer id="elementC">
+						<s:SkinnableContainer id="viewDKTK">
 							<s:HGroup paddingLeft="25" paddingTop="25">
 								<s:VGroup paddingRight="30" gap="20" verticalAlign="middle" paddingTop="10">
 									<s:Label text="Tài khoản" />
@@ -219,7 +219,7 @@
 						</s:SkinnableContainer>
 						
 						<!--Thiết lập lịch làm việc-->
-						<s:SkinnableContainer id="elementD">
+						<s:SkinnableContainer id="viewLLV">
 							<form:FormDKLich width="100%" height="100%">
 								
 							</form:FormDKLich>

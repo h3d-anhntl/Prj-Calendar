@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+///////////////////////////////////////////////////////////////////////////////
+//
+// Licensed Source Code - Property of ProjectKit
+//
+// Copyright © 2014 ProjectKit. All Rights Reserved.
+//
+///////////////////////////////////////////////////////////////////////////////
+-->
+<s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				xmlns:s="library://ns.adobe.com/flex/spark" 
+				xmlns:mx="library://ns.adobe.com/flex/mx" 
+				autoDrawBackground="true">
+	<fx:Script>
+		<![CDATA[
+			public override function set selected(value:Boolean):void
+			{
+				selectedIcon.visible = value;
+				super.selected = value;
+			}
+			
+			public override function set data(value:Object):void
+			{
+				super.data = value;
+				if(value != null && value.hasOwnProperty('name'))
+					nameLabel.text = data.name;
+			}
+		]]>
+	</fx:Script>
+	<s:states>
+		<s:State name="normal"/>
+		<s:State name="selected"/>
+	</s:states>
+	<s:layout>
+		<s:HorizontalLayout verticalAlign="middle"/>
+	</s:layout>
+	<s:Image id="selectedIcon" source="@Embed('resources/selected.png')"/>
+	<s:Image source="@Embed('resources/calendar.png')"/>
+	<s:Label id="nameLabel"/>
+	
+</s:ItemRenderer>

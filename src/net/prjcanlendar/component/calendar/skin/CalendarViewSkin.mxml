@@ -4,7 +4,7 @@
 		xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:ns="http://f-project.net/xmlns/fprj-ui/2015">
 	<!-- host component -->
 	<fx:Metadata>
-		[HostComponent("gui.CalendarView")]
+		[HostComponent("net.prjcanlendar.component.calendar.CalendarView")]
 	</fx:Metadata>
 	
 	<fx:Declarations>
@@ -40,7 +40,7 @@
 									   label="Hôm nay"/>
 					<!--- @private--> 
 					<ns1:ToolbarButton id="prevButton" height="21" width="26"
-									   skinClass="gui.LeftArrowButtonSkin"/>
+									   skinClass="net.prjcanlendar.component.calendar.skin.LeftArrowButtonSkin"/>
 					
 					<!-- Currently displayed time interval--> 
 					<s:Label id="rangeLabel" fontWeight="bold" 
@@ -52,7 +52,7 @@
 					
 					<!--- @private--> 
 					<ns1:ToolbarButton id="nextButton" height="21" width="26"
-									   skinClass="gui.RightArrowButtonSkin"/>
+									   skinClass="net.prjcanlendar.component.calendar.skin.RightArrowButtonSkin"/>
 				</s:HGroup>
 				
 				<s:Spacer width="100%"/>
@@ -60,7 +60,7 @@
 				<ns1:ButtonBar id="dateIntervalButtonBar" requireSelection="true" labelField="label" selectedIndex="3">
 					<ns1:dataProvider>
 						<s:ArrayCollection>
-							<fx:Object label="Ngày" value="day"/>
+							<!--<fx:Object label="Ngày" value="day"/>-->
 							<fx:Object label="Tuần" value="week"/>
 							<fx:Object label="Tháng" value="month"/>
 						</s:ArrayCollection>

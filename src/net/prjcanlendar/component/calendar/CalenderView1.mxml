@@ -188,12 +188,13 @@
 		<s:VGroup id="calendarControlGroup" width="100%" height="100%" horizontalAlign="right">
 			<!-- The calendar has a custom skin with navigation buttons and custom sub components skins & renderers -->
 			<ns:Calendar id="calendarControl" width="100%" height="100%"		
-						   dateInterval="week"
+						   dateInterval="week" 
 						   maxNumColumns="14" maxNumRows="8" scrollStep="2"
-						   minTimeOfDay="0am" maxTimeOfDay="12pm"
+						   minTimeOfDay="0am" maxTimeOfDay="12pm" 
 						   showItemIndicators="true" styleName="myhomeCalendar" minWidth="500"
 						   visibleTimeRangeChanged="calendarControl_visibleTimeRangeChangedHandler(event)"
-						   creationComplete="calendarControl_creationCompleteHandler(event)"/>   
+						   creationComplete="calendarControl_creationCompleteHandler(event)"
+						   itemVerticalRenderer=""/>   
 			
 		</s:VGroup>
 		

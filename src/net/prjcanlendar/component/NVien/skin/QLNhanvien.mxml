@@ -4,7 +4,8 @@
 		 xmlns:mx="library://ns.adobe.com/flex/mx"
 		 width="100%" height="100%" xmlns:gui="gui.*"
 		 currentState="nhanvien"
-		 creationComplete="group1_creationCompleteHandler(event)" xmlns:NVien="net.prjcanlendar.component.NVien.*">
+		 creationComplete="group1_creationCompleteHandler(event)" 
+		 xmlns:NVien="net.prjcanlendar.component.NVien.*" xmlns:view="net.prjcanlendar.component.view.*" xmlns:skin="net.prjcanlendar.component.NVien.skin.*">
 	<fx:Script>
 		<![CDATA[
 			import mx.events.FlexEvent;
@@ -48,8 +49,10 @@
 		<s:State name="nhanvien" />
 		<s:State name="nhanviennew"/>
 	</s:states>
+	<NVien:NhanVienView id="nhanvienbt" width="100%" height="100%" includeIn="nhanvien" >
+		
+	</NVien:NhanVienView>
+	<!--<NVien:NhanVien id="nhanvienbt" width="100%" height="100%" includeIn="nhanvien" ></NVien:NhanVien>-->
 	
-	<NVien:NhanVien id="nhanvienbt" width="100%" height="100%" includeIn="nhanvien" ></NVien:NhanVien>
-	
-	<NVien:NhanVienNew id="nhanviennewbt" width="100%" height="100%" includeIn="nhanviennew"></NVien:NhanVienNew>
+	<skin:NhanVienNew id="nhanviennewbt" width="100%" height="100%" includeIn="nhanviennew"></skin:NhanVienNew>
 </s:Group>

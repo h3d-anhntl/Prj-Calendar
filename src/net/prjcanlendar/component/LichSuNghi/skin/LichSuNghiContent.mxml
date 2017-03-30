@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 width="100%" height="100%">
+	
+	<fx:Metadata>
+		[HostComponent("net.prjcanlendar.component.LichSuNghi.LichSuNghiContentView")]
+	</fx:Metadata>
+		
+	<fx:Script>
+		<![CDATA[
+			import net.prjcanlendar.component.LichSuNghi.LichSuNghiContentView;
+		]]>
+	</fx:Script>
+		<s:layout>
+			<s:VerticalLayout gap="0">
+				
+			</s:VerticalLayout>
+		</s:layout>
+		
+		<s:HGroup gap="10" padding="10">
+			<s:Button id="btTaoMoiYCN" label="Tạo mới" color="red">
+				
+			</s:Button>
+			
+			<s:Button id="btXoaYcN" label="Xóa" color="red">
+				
+			</s:Button>
+		</s:HGroup>	
+		
+		<mx:AdvancedDataGrid id="myADG" width="100%" height="100%">        
+			<!--<mx:dataProvider>
+			<mx:GroupingCollection2 id="gc">
+			<mx:grouping>
+			<mx:Grouping>
+			<mx:GroupingField name="loainghiid"/>
+			</mx:Grouping>
+			</mx:grouping>
+			</mx:GroupingCollection2>
+			</mx:dataProvider>   -->     
+			
+			<mx:columns>
+				<mx:AdvancedDataGridColumn dataField="nhanvienid" headerText="Nhân viên"/>
+				<mx:AdvancedDataGridColumn dataField="lydo" headerText="Lý do"/>
+				<mx:AdvancedDataGridColumn headerText="Số ngày"/>
+				<mx:AdvancedDataGridColumn dataField="tungay" headerText="Từ ngày"/>
+				<mx:AdvancedDataGridColumn dataField="toingay" headerText="Tới ngày"/>
+				<mx:AdvancedDataGridColumn dataField="trangthai" headerText="Trạng thái"/>
+			</mx:columns>
+		</mx:AdvancedDataGrid>
+	</s:Group>

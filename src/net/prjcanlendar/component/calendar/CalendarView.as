@@ -1,4 +1,4 @@
-package gui
+package net.prjcanlendar.component.calendar
 {
 	import flash.events.MouseEvent;
 	
@@ -11,7 +11,9 @@ package gui
 	
 	import model.CalendarItem;
 	
+	import net.fproject.calendar.WeekDay;
 	import net.fproject.calendar.WorkCalendar;
+	import net.fproject.calendar.WorkShift;
 	import net.fproject.calendar.components.Calendar;
 	import net.fproject.calendar.components.DateInterval;
 	import net.fproject.calendar.events.CalendarEvent;
@@ -19,6 +21,7 @@ package gui
 	import net.fproject.di.Injector;
 	import net.fproject.ui.buttonBar.ButtonBar;
 	import net.fproject.ui.toolbar.supportClasses.ToolbarButton;
+	import net.fproject.utils.DateTimeUtil;
 	
 	public class CalendarView extends SkinnableComponent
 	{
@@ -27,7 +30,25 @@ package gui
 			super();
 			Injector.inject(this);
 			
-			workCalendar = WorkCalendar.STANDARD;
+			
+			workCalendar = new WorkCalendar("Custom");
+			var workingTimes:Vector.<WorkShift> = new Vector.<WorkShift>(1);
+			workingTimes[0] = WorkShift.create(0, DateTimeUtil.getTime(24));
+			
+			var dayoff:WeekDay = new WeekDay();
+			dayoff.isWorking = false;
+			dayoff.dayOfWeek = 0;
+			
+			var dayoff6:WeekDay = new WeekDay();
+			dayoff6.isWorking = false;
+			dayoff6.dayOfWeek = 6;
+			
+			workCalendar.weekDays[0] = dayoff;
+			for (var i:int = 1; i < 6; i++)
+			{
+				workCalendar.setWeekDayWorkShifts(i, workingTimes);
+			}
+			workCalendar.weekDays[6] = dayoff6;
 		}
 		
 		[Bindable]
@@ -81,12 +102,12 @@ package gui
 			// Update the date interval button bar
 			var dateInterval:String = calendarControl.renderData.dateInterval;
 			
-			if (dateInterval == DateInterval.DAY)
+			/*if (dateInterval == DateInterval.DAY)
+				dateIntervalButtonBar.selectedIndex = 0;*/
+			if (dateInterval == DateInterval.WEEK)
 				dateIntervalButtonBar.selectedIndex = 0;
-			else if (dateInterval == DateInterval.WEEK)
-				dateIntervalButtonBar.selectedIndex = 1;
 			else if (dateInterval == DateInterval.MONTH)
-				dateIntervalButtonBar.selectedIndex = 2;
+				dateIntervalButtonBar.selectedIndex = 1;
 			
 			/*if (_dateChooserHandler == null)
 			{

@@ -6,31 +6,39 @@
 @namespace form "net.prjcanlendar.form.*";
 @namespace NhanVien "net.prjcanlendar.component.NhanVien.*";
 @namespace NVien "net.prjcanlendar.component.NVien.*";
+@namespace view "net.prjcanlendar.component.view.*";
+@namespace component "net.prjcanlendar.component.*";
+@namespace Menu "net.prjcanlendar.component.Menu.*";
+@namespace form1 "net.prjcanlendar.component.form.*";
 
 .maunen{
 	fillColor:#4285F4;
+}
+
+.listnoneBorder{
+	borderVisible:"false" ;
 }
 
 /*.maunenhomnay{
 	fillColor:#FF99FF;
 }*/
 
-gui1|Header s|Label{
+component|Header s|Label{
 	fontWeight: bold;
 	color: #FFFFFF;
 }
 
-gui1|Menu s|Label{	
+Menu|Menu s|Label{	
 	fontSize: 15px;
 	fontFamily: Arial;
 	
 }
-gui1|Menu .nodeMenu {
+Menu|Menu .nodeMenu {
 	fontWeight: bold;
 	paddingLeft: 10px;
 }
 
-gui1|Menu .childMenu{
+Menu|Menu .childMenu{
 	paddingLeft: 20px;
 }
 
@@ -38,10 +46,10 @@ s|List.noneBorder{
 	borderVisible:"false" 
 }
 
-form|FormYCNghiPhep s|Label{
+form1|FormYCNghiPhep s|Label{
 	fontWeight: bold;
 }
-form|XemYCNghiPopup  s|Label{
+form1|XemYCNghiPopup  s|Label{
 	fontWeight: bold;
 }
 NVien|NhanVienNewHeader s|Label{
@@ -51,6 +59,7 @@ NVien|NhanVienNewContent s|Label{
 	fontWeight: bold;
 	color: #4C4C4C;
 }
-form|FormTaoTaiKhoanPopup s|Label{
+form1|FormTaoTaiKhoanPopup s|Label{
 	fontWeight: bold;
 }
+

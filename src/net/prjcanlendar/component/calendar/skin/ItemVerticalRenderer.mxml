@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+///////////////////////////////////////////////////////////////////////////////
+//
+// Licensed Source Code - Property of ProjectKit
+//
+// Copyright © 2013 ProjectKit. All Rights Reserved.
+//
+///////////////////////////////////////////////////////////////////////////////
+-->
+<fprj:CalendarRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx"  
+					   xmlns:fb="http://ns.adobe.com/flashbuilder/2009"
+					   depth="0" depth.selected="1"
+					   xmlns:fprj="http://f-project.net/xmlns/fprj/2013"
+					   styleName="calendarRenderer">
+	<fx:Script>
+		<![CDATA[
+			import mx.utils.ColorUtil;
+			
+			import net.fproject.core.TimeUnit;
+			override protected function applyContentBackgroundColorAndAlpha():void
+			{
+				var colorFunction:Function = this.renderData.itemColorFunction;
+				var visibleCheck:Boolean = range == null || range.length < 2 || ((range[1].time - range[0].time) >= TimeUnit.HOUR.milliseconds);
+				if(colorFunction != null)
+				{
+					var o:Object = colorFunction(data, false, false);
+					var b:Boolean = o["isPastEvent"];
+					
+					crimper.visible = !b && visibleCheck;
+					if(b)
+					{
+						var c:uint = o["color"];
+						if(this.hovered || this.selected)
+							c = ColorUtil.adjustBrightness2(c, -10);
+						backgroundFill.entries[0].color = backgroundFill.entries[1].color = c;
+						shadowStroke.color = ColorUtil.adjustBrightness2(c, -20);
+						borderStroke.color = ColorUtil.adjustBrightness2(c, -50);
+					}
+					else if(!this.selected && !this.hovered)
+					{
+						backgroundFill.entries[0].color = 0xFCFBDB;
+						backgroundFill.entries[1].color = 0xF4EF89;
+						shadowStroke.color = 0xD0C36B;
+						borderStroke.color = 0xEFDD75;
+					}
+					
+					borderStroke.alpha = !b && this.selected ? 0.4 : 1;
+				}
+				else
+				{
+					crimper.visible = visibleCheck;
+				}
+			}
+		]]>
+	</fx:Script>
+	<fprj:states>
+		<s:State name="normal"/>
+		<s:State name="hovered" stateGroups="over,highlight"/>
+		<s:State name="selected" stateGroups="select,highlight"/>
+		<s:State name="selectedAndHovered" basedOn="selected" stateGroups="over,select,highlight"/>
+		<s:State name="edited" basedOn="selected" stateGroups="select,highlight"/>
+	</fprj:states>  
+	
+	<s:Rect left="3" top="3" right="0" bottom="0">
+		<s:stroke>
+			<s:SolidColorStroke id="shadowStroke" weight="3" color="#D0C36B" color.over="#CCCCCC"/>
+		</s:stroke>
+	</s:Rect>
+	<s:Rect id="background"
+			left="0" right="2" bottom="2" top="0">
+		<s:fill>
+			<s:LinearGradient id="backgroundFill"
+							  x="2.83386" y="8.66461" scaleX="151.901" rotation="40.445">
+				<s:GradientEntry ratio="0" color="#FCFBDB" color.highlight="#FEFDB7"/>
+				<s:GradientEntry ratio="1" color="#F4EF89" color.highlight="#F5F06C"/>
+			</s:LinearGradient>
+		</s:fill>
+		<s:stroke>
+			<s:SolidColorStroke id="borderStroke"
+								caps="none" joints="miter" miterLimit="4" 
+								color="#EFDD75" color.hovered="#FFFF00" color.select="#FF"
+								weight="1" weight.highlight="2"/>
+		</s:stroke>
+		
+	</s:Rect>
+	<s:Path id="leftTopBackground"
+			left="1" top="1" right="3" height="50%" alpha="0.277778" winding="nonZero" 
+			data="M83.4576 0.300781 42.6231 0.150391 1.78909 0C1.78909 0 -11.042 128.57 32.0201 57.7227 75.0826 -13.124 80.1617 16.832 83.4576 0.300781Z">
+		<s:fill>
+			<s:LinearGradient id="leftTopGradientFill"
+							  x="22.5713" y="1.67508" scaleX="66.9303" rotation="58.6848">
+				<s:GradientEntry ratio="0" color="#FFFFFF"/>
+				<s:GradientEntry ratio="1" color="#FFFFFF" alpha="0"/>
+			</s:LinearGradient>
+		</s:fill>
+	</s:Path>
+	<s:Path id="crimper"
+			left="1"  left.highlight="2"
+			bottom="2" bottom.highlight="4"
+			winding="nonZero" width="30" height="25" 
+			data="M0 0C9.13428 4.41016 17.9878 0.998047 17.5942 1.19824 17.6919 1.53027 16.9346 16.7637 29.1533 22.4004 11.4351 22.2695 0 12.2227 0 0Z">
+		<s:fill>
+			<s:LinearGradient id="crimperFill"
+							  x="19.1774" y="2.50482" scaleX="16.3643" rotation="117.88">
+				<s:GradientEntry ratio="0" color="#F9F57C" color.select="#FDFB63"/>
+				<s:GradientEntry ratio="1" color="#DDD57A" color.select="#E2D94A"/>
+			</s:LinearGradient>
+		</s:fill>
+		<s:stroke>
+			<s:SolidColorStroke id="crimperStroke"
+								weight="1" caps="none" joints="miter" miterLimit="4" 
+								color="#F8DF37" alpha="0.375"/>
+		</s:stroke>
+	</s:Path>
+	
+	<s:VGroup width="100%" height="100%" left="5" right="5" top="5" bottom="5" gap="0" 
+			  clipAndEnableScrolling="true" horizontalAlign="center" >
+		
+		<!--- @copy net.fproject.calendar.supportClasses.CalendarRenderer#beforeIcon -->
+		<!--<s:Path id="beforeIcon" horizontalCenter="0" top="0"        
+		data="M 0 5 L 5 5 L 3 0 Z">
+		<s:fill>
+		<s:SolidColor id="beforeIconFill" color="0x000000" />
+		</s:fill>
+		</s:Path>-->
+		
+		<!--- @private -->
+		<s:HGroup id="startLabelGroup" width="100%" verticalAlign="middle" paddingTop="1" gap="1" >
+			
+			<!--- @copy net.fproject.calendar.supportClasses.CalendarRenderer#occurrenceIcon --> 
+			<s:Path id="occurrenceIcon" height="100%"              
+					data="M 1 6 Q 10 -2 13 8 Q 10 -4 1 6  
+					M 14 8 Q 6 18 1 8 Q 6 20 14 8
+					M 0 9 L 4 9 L 2 5 L 0 9
+					M 10 6 L 14 6 L 12 10 L 10 6" >
+				<s:fill>
+					<!--- @private -->
+					<s:SolidColor id="occurrenceIconFill" color="0x000000" />
+				</s:fill>
+			</s:Path>
+			
+			<!--- @copy net.fproject.calendar.supportClasses.CalendarRenderer#exceptionIcon -->
+			<s:Path id="exceptionIcon" height="100%"                   
+					data="M 1 6 Q 10 -2 13 8 Q 10 -4 1 6  
+					M 14 8 Q 6 18 1 8 Q 6 20 14 8
+					M 0 9 L 4 9 L 2 5 L 0 9
+					M 10 6 L 14 6 L 12 10 L 10 6
+					M 0 0 L 15 15 L 13 15 L 0 0
+					M 15 0 L 0 15 L 2 15 L 15 0" >
+				<s:fill>
+					<!--- @private -->
+					<s:SolidColor id="exceptionIconFill" color="0x00000" />
+				</s:fill>
+			</s:Path>
+			
+			<!--- @copy net.fproject.calendar.skins.spark.supportClasses.CalendarRenderer#startTimeLabelDisplay -->
+			<s:Label id="startTimeLabelDisplay" maxDisplayedLines="1" fontWeight="bold" />        
+			
+		</s:HGroup>
+		
+		<!--- @copy net.fproject.calendar.skins.spark.supportClasses.CalendarRenderer#labelDisplay -->
+		<s:Label id="labelDisplay" width="100%" height="100%" paddingBottom="3" paddingTop="2"
+				 color="0" color.select="#FF"/>
+		
+		<!--- @copy net.fproject.calendar.supportClasses.CalendarRenderer#endTimeLabelDisplay -->
+		<s:Label id="endTimeLabelDisplay" maxDisplayedLines="1" width="100%" textAlign="left"
+				 fontWeight="bold" includeIn="edited" />
+		
+		<!--- @copy net.fproject.calendar.supportClasses.CalendarRenderer#afterIcon -->
+		<!--<s:Path id="afterIcon"               
+		data="M 0 0 L 5 0 L 3 5 Z">
+		<s:fill>
+		<s:SolidColor id="afterIconFill" color="0x000000" />
+		</s:fill>
+		</s:Path>-->		
+	</s:VGroup>       
+	
+</fprj:CalendarRenderer>

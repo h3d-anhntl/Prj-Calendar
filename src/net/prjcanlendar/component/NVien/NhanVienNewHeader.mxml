@@ -36,7 +36,7 @@
 			  horizontalAlign="left" verticalAlign="middle"
 			  gap="0">		
 		<s:Button label="Nhân Viên" fontSize="20" fontWeight="bold" 
-				   skinClass="net.prjcanlendar.skin.ButtonSkin" id="btNV" click="btNV_clickHandler(event)">		
+				   skinClass="net.prjcanlendar.component.ButtonSkin" id="btNV" click="btNV_clickHandler(event)">		
 		</s:Button>
 		<s:Label text="/Mới" fontSize="20" paddingTop="2">
 			
@@ -45,7 +45,7 @@
 	
 	<s:HGroup width="100%" height="100%" paddingBottom="10" 
 			  horizontalAlign="left" verticalAlign="middle">
-		<s:Button label="Lưu" skinClass="net.prjcanlendar.skin.btSkinTaoMoi">
+		<s:Button label="Lưu" skinClass="net.prjcanlendar.component.btSkinTaoMoi">
 			
 		</s:Button>
 		<s:Label text="hoặc">

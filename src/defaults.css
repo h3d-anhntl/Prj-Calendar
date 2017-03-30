@@ -2,8 +2,31 @@
 @namespace s "library://ns.adobe.com/flex/spark";
 @namespace mx "library://ns.adobe.com/flex/mx";
 @namespace gui "gui.*";
+@namespace view "net.prjcanlendar.component.view.*";
+@namespace NVien "net.prjcanlendar.component.NVien.*";
+@namespace LichSuNghi "net.prjcanlendar.component.LichSuNghi.*";
+@namespace PheDuyet "net.prjcanlendar.component.PheDuyet.*";
+@namespace TaiKhoan "net.prjcanlendar.component.TaiKhoan.*";
+@namespace calendar "net.prjcanlendar.component.calendar.*";
 
-gui|CalendarView
+calendar|CalendarView
 {
-	skinClass:ClassReference("gui.CalendarViewSkin");
+	skinClass:ClassReference("net.prjcanlendar.component.calendar.skin.CalendarViewSkin");
+}
+LichSuNghi|LichSuNghiContentView
+{
+	skinClass:ClassReference("net.prjcanlendar.component.LichSuNghi.skin.LichSuNghiContent");
+}
+PheDuyet|PheDuyetContentView
+{
+	skinClass:ClassReference("net.prjcanlendar.component.PheDuyet.skin.PheDuyetContent");
+}
+TaiKhoan|TaiKhoanContentView
+{
+	skinClass:ClassReference("net.prjcanlendar.component.TaiKhoan.skin.TaiKhoanContent");
+}
+
+NVien|NhanVienView
+{
+	skinClass:ClassReference("net.prjcanlendar.component.NVien.skin.NhanVienViewSkin");
 }

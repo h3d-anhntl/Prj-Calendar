@@ -4,9 +4,10 @@
 			   xmlns:mx="library://ns.adobe.com/flex/mx" 
 			   xmlns:core="net.fproject.gui.component.*"
 			   xmlns:gui="net.prjcanlendar.gui.*" currentState="bantin"
-			   xmlns:event="net.prjcanlendar.event.*">
+			   xmlns:event="net.prjcanlendar.event.*" xmlns:skin="net.prjcanlendar.component.BanTin.skin.*" xmlns:skin1="net.prjcanlendar.component.NVien.skin.*" xmlns:skin2="net.prjcanlendar.component.LichSuNghi.skin.*" xmlns:component="net.prjcanlendar.component.*" xmlns:skin3="net.prjcanlendar.component.PheDuyet.skin.*" xmlns:skin4="net.prjcanlendar.component.YCNGhiPhep.skin.*" xmlns:Menu="net.prjcanlendar.component.Menu.*" xmlns:TaiKhoan="net.prjcanlendar.component.TaiKhoan.*" xmlns:skin5="net.prjcanlendar.component.TaiKhoan.skin.*">
 	
 	<fx:Style source="style.css" />
+	<fx:Style source="defaults.css" />
 	
 	<fx:Script>
 		<![CDATA[
@@ -47,37 +48,37 @@
 	
 	<s:Group width="100%" height="40">
 		<core:SolidColorRect width="100%" height="100%" styleName="maunen" />
-		<gui:Header width="100%"></gui:Header>
+		<component:Header width="100%"></component:Header>
 	</s:Group>
 	<s:HGroup  top="40" width="100%" gap="0">
-		<s:Group width="14%" height="620">
-			<gui:Menu width="100%" clickBt="menu3_clickBtHandler(event)"></gui:Menu>
+		<s:Group width="14%" minWidth="200" height="620">
+			<Menu:Menu width="100%" clickBt="menu3_clickBtHandler(event)"></Menu:Menu>
 		</s:Group>
 		
 		<s:Group width="86%">
-			<gui:BanTin width="100%" height="620" includeIn="bantin">
+			<skin:BanTin width="100%" height="620" includeIn="bantin">
 				
-			</gui:BanTin>
+			</skin:BanTin>
 			<!--<gui:NhanVien  height="620" includeIn="nhanvien">				
 			</gui:NhanVien>-->
 			<!--<gui:NhanVienNew  height="620" includeIn="nhanvien">
 				
 			</gui:NhanVienNew>-->
-			<gui:QLNhanvien width="100%" height="620" includeIn="nhanvien">
+			<skin1:QLNhanvien width="100%" height="620" includeIn="nhanvien">
 				
-			</gui:QLNhanvien>
-			<gui:QLTaiKhoan width="100%" height="620" includeIn="qlTaikhoan">
+			</skin1:QLNhanvien>
+			<skin5:QLTaiKhoan width="100%" height="620" includeIn="qlTaikhoan">
 				
-			</gui:QLTaiKhoan>
-			<gui:YCNghiPhep width="100%" height="620" includeIn="ycNghiphep">
+			</skin5:QLTaiKhoan>
+			<skin4:YCNghiPhep width="100%" height="620" includeIn="ycNghiphep">
 				
-			</gui:YCNghiPhep>
-			<gui:LichSuNghi width="100%" height="620" includeIn="lsNghiphep">
+			</skin4:YCNghiPhep>
+			<skin2:LichSuNghi width="100%" height="620" includeIn="lsNghiphep">
 				
-			</gui:LichSuNghi>
-			<gui:PheDuyet width="100%" height="620" includeIn="pheduyet">
+			</skin2:LichSuNghi>
+			<skin3:PheDuyet width="100%" height="620" includeIn="pheduyet">
 				
-			</gui:PheDuyet>
+			</skin3:PheDuyet>
 		</s:Group>
 	</s:HGroup>
 </s:Application>

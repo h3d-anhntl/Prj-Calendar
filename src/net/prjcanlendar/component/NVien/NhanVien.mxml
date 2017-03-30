@@ -4,7 +4,9 @@
 		 xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%"
 		 xmlns:gui="net.prjcanlendar.gui.*"
 		 creationComplete="group1_creationCompleteHandler(event)"
-		 currentState="nhanVienListAvatar" xmlns:NVien="net.prjcanlendar.component.NVien.*">
+		 currentState="nhanVienListAvatar"
+		 xmlns:NVien="net.prjcanlendar.component.NVien.*"
+		 xmlns:component="net.prjcanlendar.component.*" xmlns:view="net.prjcanlendar.component.view.*">
 	
 	<s:layout>
 		<s:VerticalLayout>
@@ -13,13 +15,29 @@
 	</s:layout>
 	<fx:Script>
 		<![CDATA[
+			import mx.collections.ArrayCollection;
 			import mx.events.FlexEvent;
 			
 			import spark.events.IndexChangeEvent;
 			
+			import model.NhanVien;
+			
+			public var nv:model.NhanVien = new model.NhanVien;
+			
+			[Bindable]
+			public var listNV1:ArrayCollection;
 			protected function group1_creationCompleteHandler(event:FlexEvent):void
 			{
-				nhanVienHeader.addEventListener('change',onButtonBarChange);
+				//tam---------------------
+				listNV1 = new ArrayCollection;
+				nv.hovaten = "Huong";
+				listNV1.addItem(nv);
+				listNV1.addItem(nv);
+				listNV1.addItem(nv);
+				listNV1.addItem(nv);
+				listNV1.addItem(nv);
+				
+				//tam---------------------
 				
 			}
 			
@@ -38,7 +56,7 @@
 	</fx:Script>
 	<s:states>
 		<s:State name="nhanVienTable" />
-		<s:State name="nhanVienListAvatar" />
+		<s:State name="nhanVienListAvatar"/>
 	</s:states>
 	
 
@@ -50,9 +68,12 @@
 						 includeIn="nhanVienTable">
 			
 		</NVien:NhanVienTable>
-		<NVien:NhanVienListAvatar height="100%" width="100%" 
-							  includeIn="nhanVienListAvatar">
-			
-		</NVien:NhanVienListAvatar>
+		<NVien:CustomGridLayout col="4" dataProvider="{listNV1}" 
+									itemRenderer="net.prjcanlendar.component.NVien.skin.NhanVienAvatar"
+									border="false"
+									gap="4" id="listNVA"
+									height="100%" width="100%">
+			<s:Label text="hehe"/>
+		</NVien:CustomGridLayout>
 	</s:Group>
 </s:Group>

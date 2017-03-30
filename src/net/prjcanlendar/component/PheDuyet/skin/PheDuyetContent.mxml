@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 width="100%" height="100%">
+	<fx:Metadata>
+		[HostComponent("net.prjcanlendar.component.PheDuyet.PheDuyetContentView")]
+	</fx:Metadata>
+	
+	<s:layout>
+		<s:VerticalLayout gap="0">
+			
+		</s:VerticalLayout>
+	</s:layout>
+	<fx:Script>
+		<![CDATA[
+			import net.prjcanlendar.component.PheDuyet.PheDuyetContentView;
+		]]>
+	</fx:Script>
+	
+	<s:HGroup gap="10" padding="10">
+		<s:Button label="Tạo mới" color="red" id="btATaoMoiYCN">
+			
+		</s:Button>
+		
+		<s:Button label="Chấp nhận" color="red" id="btAChapNhan">
+			
+		</s:Button>
+		
+		<s:Button label="Từ chối" color="red" id="btATuChoi">
+			
+		</s:Button>
+	</s:HGroup>
+	<mx:AdvancedDataGrid id="myADGPD" 
+						 width="100%" height="100%">         
+		
+		<mx:columns>
+			<mx:AdvancedDataGridColumn dataField="nhanvienid" headerText="Nhân viên"/>
+			<mx:AdvancedDataGridColumn dataField="lydo" headerText="Lý do"/>
+			<mx:AdvancedDataGridColumn headerText="Số ngày" />
+			<mx:AdvancedDataGridColumn dataField="tungay"
+									   headerText="Từ ngày"/>
+			<mx:AdvancedDataGridColumn dataField="toingay" headerText="Tới ngày"/>
+			<mx:AdvancedDataGridColumn dataField="trangthai" headerText="Trạng thái"/>
+		</mx:columns>
+	</mx:AdvancedDataGrid>
+</s:Group>

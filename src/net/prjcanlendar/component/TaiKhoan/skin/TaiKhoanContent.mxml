@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 width="100%" height="100%">
+	
+	<fx:Metadata>
+		[HostComponent("net.prjcanlendar.component.TaiKhoan.TaiKhoanContentView")]
+	</fx:Metadata>
+	<s:layout>
+		<s:VerticalLayout gap="0">
+			
+		</s:VerticalLayout>
+	</s:layout>
+	<fx:Script>
+		<![CDATA[
+			import net.prjcanlendar.component.TaiKhoan.TaiKhoanContentView;
+		]]>
+	</fx:Script>
+	
+	<s:HGroup gap="10" padding="10">
+		<s:Button label="Tạo mới" color="red" id="btTaoMoiTK">
+			
+		</s:Button>
+		
+		<s:Button label="Xóa" color="red" id="btXoaTK">
+			
+		</s:Button>
+	</s:HGroup>
+	<mx:AdvancedDataGrid id="myADGTK" 
+						 width="100%" height="100%">         
+		
+		<mx:columns>
+			<mx:AdvancedDataGridColumn dataField="id" headerText="Nhân viên"/>
+			<mx:AdvancedDataGridColumn dataField="taikhoan" headerText="Tài khoản"/>
+			<mx:AdvancedDataGridColumn dataField="matkhau"
+									   headerText="Mật khẩu"/>
+			<mx:AdvancedDataGridColumn dataField="phanquyen" headerText="Quyền"/>			
+			<mx:AdvancedDataGridColumn dataField="nhanvienid" headerText="Email"/>
+		</mx:columns>
+	</mx:AdvancedDataGrid>
+</s:Group>
