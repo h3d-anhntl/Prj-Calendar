@@ -17,6 +17,7 @@ package net.prjcanlendar.component.NVien
 	
 	import net.fproject.di.Injector;
 	import net.prjcanlendar.component.NVien.skin.NhanVienAvatar;
+	import net.prjcanlendar.event.StatesEvents;
 
 	[EventHandling(event="creationComplete",handler="group1_creationCompleteHandler")]
 	//[Style(name="skin", type="Class", inherit="no", states="nhanVienTable,nhanVienListAvatar")]
@@ -58,9 +59,14 @@ package net.prjcanlendar.component.NVien
 			return s;
 		}
 		
+		[Bindable]
+		public var selectedNV:Nhanvien = new Nhanvien;
+		
 		public function listNVA_clickHandler(event:MouseEvent):void
 		{
-			listNVA.selectedItem;
+			selectedNV = listNVA.selectedItem as Nhanvien;
+			var selectNV:StatesEvents= new StatesEvents("clickBt","selecedNV");
+			this.dispatchEvent(selectNV);
 		}
 		
 		[SkinPart(required="true",type="static")]

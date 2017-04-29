@@ -47,20 +47,24 @@ package net.prjcanlendar.component.NVien
 			
 			if(e.idBt == "btLuuNV")
 			{
-				var jpgencode:JPEGEncoder = new JPEGEncoder(100);
-				if(nvNew.bitmapData != null){
-					var mybyte:ByteArray = jpgencode.encode(nvNew.bitmapData);
-					
-					//Encode
-					var enc:Base64Encoder = new Base64Encoder();   
-					enc.encodeBytes(mybyte);
-					
-					if(mybyte != null)
-						nvNew.userDetail.avatar = enc.drain();
+				if(nvNew.userDetail.avatar == "" || nvNew.userDetail.avatar == null)
+				{
+					var jpgencode:JPEGEncoder = new JPEGEncoder(100);
+					if(nvNew.bitmapData != null){
+						var mybyte:ByteArray = jpgencode.encode(nvNew.bitmapData);
+						
+						//Encode
+						var enc:Base64Encoder = new Base64Encoder();   
+						enc.encodeBytes(mybyte);
+						
+						if(mybyte != null)
+							nvNew.userDetail.avatar = enc.drain();
+					}
+					else{
+						nvNew.userDetail.avatar = "";
+					}
 				}
-				else{
-					nvNew.userDetail.avatar = "";
-				}
+				
 				
 				if(nhanvienService.save(nvNew.userDetail)){
 					DataUntils.nhanviens = new ArrayCollection;

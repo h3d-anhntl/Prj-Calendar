@@ -15,6 +15,7 @@ package net.prjcanlendar.component.NVien
 	import mx.controls.MovieClipSWFLoader;
 	import mx.events.FlexEvent;
 	import mx.events.PropertyChangeEvent;
+	import mx.utils.Base64Decoder;
 	
 	import spark.components.Button;
 	import spark.components.ComboBox;
@@ -80,7 +81,29 @@ package net.prjcanlendar.component.NVien
 		
 		public function group1_creationCompleteHandler(event:FlexEvent):void
 		{
-			userDetail = new Nhanvien;
+			/*userDetail = new Nhanvien;*/
+			userDetail ;
+			if(userDetail)
+			{
+				var base64Dec:Base64Decoder = new Base64Decoder();
+				var byteArr:ByteArray = new ByteArray();
+				if(userDetail.avatar != null){
+					if(userDetail.avatar != ""){
+						base64Dec.decode(userDetail.avatar);
+						
+						byteArr= base64Dec.toByteArray();
+						loader.loadBytes(byteArr);
+						
+						var ratio:Number = loader.height / loader.width;
+						loader.width = loader.width > loader.height ? mc.width : mc.width / ratio;
+						loader.height = loader.width < loader.height ? mc.height : mc.height * ratio;
+					}
+					else
+						loader = new Loader();
+				}
+				else
+					loader = new Loader();
+			}
 			mc.addChild(loader);
 			fr.addEventListener(Event.SELECT,onselect);
 			fr.addEventListener(Event.COMPLETE,oncomplete);

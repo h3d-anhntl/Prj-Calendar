@@ -4,7 +4,6 @@
 		xmlns:mx="library://ns.adobe.com/flex/mx"
 		xmlns:view="net.prjcanlendar.component.view.*" 
 		xmlns:NVien="net.prjcanlendar.component.NVien.*"
-		
 		width="100%" height="100%">
 	<!-- host component -->
 	<fx:Metadata>

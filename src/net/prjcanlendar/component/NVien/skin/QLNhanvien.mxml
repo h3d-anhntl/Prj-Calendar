@@ -31,20 +31,8 @@
 			protected function group1_creationCompleteHandler(event:FlexEvent):void
 			{		
 				addEventListener('clickBt', nhanvienbt_clickHandler);
-				DataUntils.nhanviens = nhanvienService.getNhanVien() as ArrayCollection;
-				ChangeWatcher.watch(DataUntils.nhanviens, 'paginationResult',
-					function (e:PropertyChangeEvent):void
-					{
-						listnv = new ArrayCollection();
-						listnv = DataUntils.nhanviens;
-						var st:int = 0;
-						for each( var i:Nhanvien in listnv )
-						{
-							st += 1;
-							i.stt = st;
-						}
-					}
-				);
+				listnv = new ArrayCollection();
+				loadListNhanVien();
 			}
 			
 			[Bindable]
@@ -61,21 +49,7 @@
 				if( currentState == "nhanviennew"){					
 					currentState = "nhanvien";
 					DataUntils.nhanviens = new ArrayCollection;
-					DataUntils.nhanviens = nhanvienService.getNhanVien() as ArrayCollection;
-					ChangeWatcher.watch(DataUntils.nhanviens, 'paginationResult',
-						function (e:PropertyChangeEvent):void
-						{
-							/*listnv = new ArrayCollection();*/
-							listnv = DataUntils.nhanviens;
-							var st:int = 0;
-							for each( var i:Nhanvien in listnv )
-							{
-								st += 1;
-								i.stt = st;
-							}
-						}
-					);
-					
+					loadListNhanVien();
 				}
 				else{
 					if(e.idBt == "bttaoNV"){
@@ -88,6 +62,12 @@
 					else if(e.idBt == "btNV"){
 						currentState = "nhanvien";
 					}
+					else if(e.idBt == "selecedNV")
+					{
+						newNV = nhanvienbt.selectedNV;
+						currentState = "nhanviennew";
+						
+					}
 				}
 			}
 			protected function group1_addedToStageHandler(event:Event):void
@@ -97,6 +77,23 @@
 			
 			[Bindable]
 			public var nhanVien:Nhanvien = new Nhanvien;
+			
+			public function loadListNhanVien():void
+			{
+				DataUntils.nhanviens = nhanvienService.getNhanVien() as ArrayCollection;
+				ChangeWatcher.watch(DataUntils.nhanviens, 'paginationResult',
+					function (e:PropertyChangeEvent):void
+					{
+						listnv = DataUntils.nhanviens;
+						var st:int = 0;
+						for each( var i:Nhanvien in listnv )
+						{
+							st += 1;
+							i.stt = st;
+						}
+					}
+				);
+			}
 		]]>
 	</fx:Script>
 	
