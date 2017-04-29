@@ -17,7 +17,7 @@
     <channels>
         <channel-definition id="scheduleServer"
             class="net.fproject.rpc.JSONChannel">
-            <endpoint uri="http://localhost/yii2ad/backend/web"/>
+            <endpoint uri="http://localhost/Prj-Service/yii2ad/backend/web"/>
         </channel-definition>
     </channels>
 </services-config>
