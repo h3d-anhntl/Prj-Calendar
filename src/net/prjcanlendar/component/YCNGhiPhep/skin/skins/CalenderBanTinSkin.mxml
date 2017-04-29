@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		xmlns:mx="library://ns.adobe.com/flex/mx"
+		xmlns:fprj="http://f-project.net/xmlns/fprj/2013">
+	<!-- host component -->
+	<fx:Metadata>
+		[HostComponent("net.prjcanlendar.component.YCNGhiPhep.skin.CalenderBanTinSkinView")]
+	</fx:Metadata>
+	
+	<fx:Declarations>
+		<!--- @private -->
+		<fx:Vector id="defaultWorkingTimes" type="net.fproject.calendar.WorkShift">
+			<fprj:WorkShift start="8:00" end="12:00"/>
+			<fprj:WorkShift start="13:00" end="17:00"/>
+		</fx:Vector>
+		
+		<fx:Array id="calendars">
+			<fx:Object label="@Resource(bundle='calendarsample', key='calendarsample.calendar.Professional')"
+					   color="0x44BBFF" identifier="0"/>
+			<fx:Object label="@Resource(bundle='calendarsample', key='calendarsample.calendar.Personal')"
+					   color="0xAECC7A" identifier="1"/>
+		</fx:Array>
+		
+	</fx:Declarations>
+	
+	<s:Group>
+		<s:layout>
+			<s:VerticalLayout horizontalAlign="center" paddingBottom="5" paddingLeft="5" paddingRight="5"
+							  paddingTop="5"/>         
+		</s:layout>   
+		
+		<s:HGroup width="100%" height="100%">
+			
+			<!-- Middle panel group -->
+			<!-- Calendar & buttons -->
+			<s:VGroup width="100%" height="100%" minWidth="630" horizontalAlign="right">
+				
+				<!-- The calendar has a custom skin with navigation buttons and custom sub components skins & renderers -->
+				<fprj:Calendar id="calendarControl" width="100%" height="100%"		
+							   change="cal_changeHandler(event)"
+							   dateInterval="workweek"
+							   gridMouseWheelFunction="{gridMouseWheelFunction}"						   
+							   itemEditBegin="cal_itemEditBeginHandler(event)"
+							   itemEditEnd="cal_itemEditEndHandler(event)"
+							   itemHorizontalRenderer="net.prjcanlendar.component.YCNGhiPhep.skin.skins.ItemHorizontalRenderer"
+							   itemLabelRenderer="net.prjcanlendar.component.YCNGhiPhep.skin.skins.ItemLabelRenderer"
+							   itemVerticalBarRenderer="net.prjcanlendar.component.YCNGhiPhep.skin.skins.ItemVerticalBarRenderer"
+							   itemVerticalRenderer="net.prjcanlendar.component.YCNGhiPhep.skin.skins.ItemVerticalRenderer"
+							   keyDown="cal_keyDownHandler(event)" keyUp="cal_keyUpHandler(event)"
+							   maxNumColumns="14" maxNumRows="8" scrollStep="2"
+							   showItemIndicators="true"
+							   timeRangeSelectionChanged="cal_timeRangeSelectionChangedHandler(event)"
+							   visibleTimeRangeChanged="cal_visibleTimeRangeChangedHandler(event)">   
+					<fprj:dataDescriptor>
+						<fprj:CalendarDataDescriptor calendarColorFunction="{calendarColorFunction}"
+													 calendarFunction="{calendarFunction}" 
+													 commitItemFunction="{commitItemFunction}" 
+													 itemColorFunction="{itemColorFunction}"/>
+					</fprj:dataDescriptor>
+					<fprj:calendars>
+						<s:ArrayList source="{calendars}"/>
+					</fprj:calendars>               
+					
+					<fprj:workCalendar>
+						<fprj:WorkCalendar baseCalendar="{WorkCalendar.STANDARD}">
+							<fprj:weekDays>
+								<fprj:WeekDay dayOfWeek="3">
+									<fprj:workShifts>
+										<fprj:WorkShift start="8:30" end="15:00"/>
+									</fprj:workShifts>
+								</fprj:WeekDay>
+							</fprj:weekDays>                                      
+						</fprj:WorkCalendar>
+					</fprj:workCalendar>
+				</fprj:Calendar>
+				
+			</s:VGroup>
+			<!-- Right Panel Group -->
+			<!-- Date Choosers and advanced properties panel -->    
+			<mx:Accordion height="100%">
+				<s:NavigatorContent label="@Resource(bundle='calendarsample', key='calendarsample.accordion.dateInterval.title')">
+					<s:VGroup paddingBottom="10" paddingLeft="5" paddingRight="5" paddingTop="10">
+						<mx:DateChooser id="dc" allowDisjointSelection="false"
+										allowMultipleSelection="true"/>
+						<mx:DateChooser id="dc2" allowDisjointSelection="false"
+										allowMultipleSelection="true"/>
+					</s:VGroup>
+				</s:NavigatorContent>
+				<s:NavigatorContent width="100%"
+									label="@Resource(bundle='calendarsample', key='calendarsample.accordion.advancedProperties.title')">
+					<s:Scroller width="100%" height="100%" verticalScrollPolicy="auto">
+						<components:AdvancedPropertiesPanel calendar="{calendarControl}" />
+					</s:Scroller>        
+				</s:NavigatorContent>
+			</mx:Accordion>	
+			
+		</s:HGroup>			
+	</s:Group>
+</s:Skin>

@@ -8,7 +8,7 @@
 		[Event(name="clickBt", type="net.prjcanlendar.event.StatesEvents")]
 	</fx:Metadata>
 	<s:layout>
-		<s:VerticalLayout paddingTop="35" paddingLeft="35"></s:VerticalLayout>
+		<s:VerticalLayout paddingTop="25" paddingLeft="25"></s:VerticalLayout>
 	</s:layout>
 	
 	<fx:Script>

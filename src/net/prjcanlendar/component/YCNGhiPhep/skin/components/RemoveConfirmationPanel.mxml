@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:TitleWindow xmlns:fx="http://ns.adobe.com/mxml/2009" 
+         xmlns:s="library://ns.adobe.com/flex/spark" 
+         xmlns:mx="library://ns.adobe.com/flex/mx"
+         title="@Resource(bundle='calendarsample', key='calendarsample.editing.confirm.dialog.title')"         
+         >
+  
+  <fx:Script>
+    <![CDATA[
+      import mx.controls.Alert;
+      import mx.events.CloseEvent;
+      
+      public var editSerie:Boolean = true;       
+      
+      private function radioGroup_changeHandler(event:Event):void
+      {
+        editSerie  = radioGroup.selectedValue == "radio1";
+      }
+      
+      private function okHandler():void {         
+        dispatchEvent(new CloseEvent(CloseEvent.CLOSE, false, false, Alert.OK));
+      } 
+      
+      private function cancelHandler():void {         
+        dispatchEvent(new CloseEvent(CloseEvent.CLOSE, false, false, Alert.CANCEL));
+      }
+      
+      public function reset():void {
+        if (radio1) {
+          radioGroup.selectedValue = radio1.value;
+          editSerie = true;
+        }
+      }
+
+    ]]>
+  </fx:Script>
+  
+  <fx:Declarations>
+    <s:RadioButtonGroup id="radioGroup" change="radioGroup_changeHandler(event)" /> 
+  </fx:Declarations>
+  
+  <s:layout>
+    <s:VerticalLayout horizontalAlign="center" gap="5" paddingLeft="10" paddingRight="10" paddingTop="10" />
+  </s:layout>
+  
+  <s:VGroup>     
+    <s:RadioButton id="radio1" value="radio1" groupName="radioGroup" selected="true"  
+                   label="@Resource(bundle='calendarsample', key='calendarsample.removal.confirm.dialog.modifySerie')" />
+    <s:RadioButton id="radio2" value="radio2" groupName="radioGroup"
+                   label="@Resource(bundle='calendarsample', key='calendarsample.removal.confirm.dialog.modifyOccurrence')" />
+  </s:VGroup>
+  
+  <s:HGroup paddingTop="15" paddingBottom="5">
+    <s:Button id="okButton"
+              label="@Resource(bundle='calendarsample', key='calendarsample.dialog.button.ok')" 
+              click="okHandler()"/>
+    
+    <s:Button id="cancelButton" 
+               label="@Resource(bundle='calendarsample', key='calendarsample.dialog.button.cancel')" 
+               click="cancelHandler()"/>
+              
+  </s:HGroup>
+</s:TitleWindow>

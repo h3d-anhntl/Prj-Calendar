@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%" xmlns:ns="http://f-project.net/xmlns/fprj-ui/2015" xmlns:form="net.prjcanlendar.component.form.*">
+	<!-- host component -->
+	<fx:Metadata>
+		[HostComponent("net.prjcanlendar.component.NVien.NhanVienNewCotentView")]
+	</fx:Metadata>
+		<s:Scroller width="100%" height="100%" focusEnabled="false"
+					hasFocusableChildren="true">
+			<s:Group  width="100%" height="100%" >
+				<s:layout>
+					<s:VerticalLayout gap="15" paddingLeft="135">
+					</s:VerticalLayout>
+				</s:layout>
+				
+				<!--Phần thông tin tổng quát-->
+				<s:HGroup width="90%">
+					<s:Group width="20%">
+						<s:VGroup verticalAlign="middle" horizontalAlign="center" width="100%" 
+								  height="100%" paddingTop="30" gap="10">
+							<s:Group  id="loadImg" width="80%" height="90%" minHeight="150">
+								<s:MovieClipSWFLoader id="mc" width="100%" height="100%">
+								</s:MovieClipSWFLoader>
+							</s:Group>
+							<s:HGroup width="100%" height="10%" horizontalAlign="center">								
+								<s:Button label="Chọn Avatar" id="bt_import">
+									
+								</s:Button>
+							</s:HGroup>
+						</s:VGroup>
+					</s:Group>
+					<s:HGroup width="70%" gap="5">
+						<s:Form width="100%">
+							<s:FormItem label="Họ và tên">
+								<s:TextInput width="80%" id="txt_hovaten" text="@{hostComponent.userDetail.hoVaTen}">
+									
+								</s:TextInput>
+							</s:FormItem>
+							<s:FormItem label="Tên viết tắt">
+								<s:TextInput width="80%" id="txt_tenviettat" text="@{hostComponent.userDetail.tenVietTat}">
+									
+								</s:TextInput>
+							</s:FormItem>
+							
+							<s:FormItem label="Email công việc">
+								<s:TextInput width="80%" id="txt_email" text="@{hostComponent.userDetail.email}">
+									
+								</s:TextInput>
+							</s:FormItem>
+							
+							<s:FormItem label="Điện thoại">
+								<s:TextInput width="80%" id="txt_dienthoai" text="@{hostComponent.userDetail.soDienThoai}">
+									
+								</s:TextInput>
+							</s:FormItem>
+						</s:Form>
+					</s:HGroup>
+				</s:HGroup>
+				
+				<!--Phần thông tin chi tiết-->
+				<s:VGroup width="100%" gap="0">	
+					<s:HGroup width="90%">
+						<s:TabBar  width="60%" depth="1" id="slidingTabs" 
+								   change="viewStackDemo.selectedChild = slidingTabs.selectedItem.element">	
+							
+							<s:ArrayCollection>						
+								<fx:Object label="Thông tin cơ bản" element="{viewTTCB}" />
+								<fx:Object label="Thông tin cá nhân" element="{viewTTCN}" />
+								<fx:Object label="Thiết lập tài khoản" element="{viewDKTK}" />
+								<fx:Object label="Thiết lập lịch làm việc" element="{viewLLV}" />
+							</s:ArrayCollection>
+						</s:TabBar>
+						
+						
+					</s:HGroup>
+					<s:Group width="91%">
+						<s:layout>
+							<s:VerticalLayout gap="0">
+								
+							</s:VerticalLayout>
+						</s:layout>
+						<ns:ViewStack height="100%" width="100%" depth="0"   selectedIndex="0"
+									  backgroundColor="#FFFFFF" id="viewStackDemo"
+									  borderVisible="true" borderAlpha=".2" minHeight="245">
+							<!--Phần Thông tin cơ bản-->
+							<s:SkinnableContainer id="viewTTCB">
+								<s:HGroup paddingLeft="25" paddingTop="35">
+									<s:VGroup paddingRight="30" gap="20" verticalAlign="middle" paddingTop="10">
+										<s:Label text="Phòng ban"></s:Label>
+										<s:Label text="Chức danh công việc" paddingTop="5"></s:Label>
+										<s:Label text="Facebook"></s:Label>
+										<s:Label text="Ghi chú"></s:Label>
+									</s:VGroup>
+									<mx:VRule height="180">
+										
+									</mx:VRule>
+									<s:VGroup paddingLeft="30" gap="15">
+										<s:ComboBox width="200" id="phongban" selectedItem="@{hostComponent.userDetail.phongBan}" >
+										</s:ComboBox>
+										<s:ComboBox width="200" id="cb_chucdanh" selectedItem="@{hostComponent.userDetail.chucVu}">
+										</s:ComboBox>
+										
+										<s:TextInput width="200" id="txt_facebook" text="@{hostComponent.userDetail.facebook}">
+											
+										</s:TextInput>
+										<s:TextArea width="300" height="70" id="tt_ttghichu" text="@{hostComponent.userDetail.ghiChu}">
+											
+										</s:TextArea>
+									</s:VGroup>							
+								</s:HGroup>												
+							</s:SkinnableContainer>
+							
+							<!--Phần Thông tin cá nhân-->
+							<s:SkinnableContainer id="viewTTCN">
+								<s:HGroup paddingLeft="25" paddingTop="35" gap="40">
+									<s:HGroup paddingRight="40">
+										<s:VGroup paddingRight="20" gap="30" verticalAlign="middle" paddingTop="10">
+											<s:Label text="Số CMTND" />
+											<s:Label text="Số Tài khoản ngân hàng" />
+											<s:Label text="Địa chỉ" />
+										</s:VGroup>
+										
+										<mx:VRule height="110">
+											
+										</mx:VRule>
+										
+										<s:VGroup gap="20" paddingLeft="10">
+											<s:TextInput width="200" id="txt_cmtnd" text="@{hostComponent.userDetail.cmtnd}">
+												
+											</s:TextInput>
+											<s:TextInput  width="200" id="txt_sotknganhang" text="@{hostComponent.userDetail.sotkNganHang}">
+												
+											</s:TextInput>
+											<s:TextInput  width="200" id="txt_diachi" text="@{hostComponent.userDetail.diaChi}">
+												
+											</s:TextInput>
+										</s:VGroup>
+									</s:HGroup>
+									<s:HGroup >
+										<s:VGroup paddingRight="20" gap="30" verticalAlign="middle" paddingTop="10">
+											<s:Label text="Ngày sinh" />
+											<s:Label text="Giới tính" />
+											<s:Label text="Tình trạng hôn nhân" />
+										</s:VGroup>
+										
+										<mx:VRule height="110">
+											
+										</mx:VRule>
+										
+										<s:VGroup gap="20" paddingLeft="10">
+											<mx:DateField  width="225" id="df_ngaysinh" selectedDate="@{hostComponent.userDetail.ngaySinh}">
+												
+											</mx:DateField>
+											<s:ComboBox  width="200" id="cb_gioitinh" selectedIndex="@{hostComponent.userDetail.gioiTinh}">
+												<s:dataProvider>
+													<s:ArrayList>
+														<fx:String>Nam</fx:String>
+														<fx:String>Nữ</fx:String>
+													</s:ArrayList>
+												</s:dataProvider>
+											</s:ComboBox>
+											<s:ComboBox  width="200" id="cb_tinhtranghn" selectedItem="@{hostComponent.userDetail.ttHonNhan}">
+											</s:ComboBox>
+										</s:VGroup>
+									</s:HGroup>
+								</s:HGroup>
+								
+							</s:SkinnableContainer>
+							
+							<!--Phần Đăng ký tài khoản-->
+							<s:SkinnableContainer id="viewDKTK">
+								<s:HGroup paddingLeft="25" paddingTop="25">
+									<s:VGroup paddingRight="30" gap="20" verticalAlign="middle" paddingTop="10">
+										<s:Label text="Tài khoản" />
+										<s:Label text="Mật khẩu" />
+										<s:Label text="Ghi chú" />
+									</s:VGroup>
+									
+									<mx:VRule height="170">									
+									</mx:VRule>
+									
+									<s:VGroup gap="10" paddingLeft="20">
+										<s:TextInput width="300" id="txt_taikhoan">
+											
+										</s:TextInput>
+										<s:TextInput  width="300" id="txt_matkhau">
+											
+										</s:TextInput>
+										<s:TextArea width="300" height="100" id="tt_tkghichu">
+											
+										</s:TextArea>
+									</s:VGroup>
+								</s:HGroup>
+							</s:SkinnableContainer>
+							
+							<!--Thiết lập lịch làm việc-->
+							<s:SkinnableContainer id="viewLLV">
+								<form:FormDKLich width="100%" height="100%">
+									
+								</form:FormDKLich>
+							</s:SkinnableContainer>
+						</ns:ViewStack>
+						
+						
+					</s:Group>
+				</s:VGroup>
+			</s:Group>		
+		</s:Scroller>
+</s:Group>

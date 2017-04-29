@@ -6,7 +6,7 @@
 	
 	
 	<s:layout>
-		<s:HorizontalLayout  padding="35"></s:HorizontalLayout>
+		<s:HorizontalLayout  padding="25"></s:HorizontalLayout>
 	</s:layout>
 	
 	<s:Label text="Yêu cầu nghỉ phép" fontSize="20" fontWeight="bold" width="90%">		

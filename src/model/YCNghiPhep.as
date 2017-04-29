@@ -2,15 +2,33 @@ package model
 {
 	public class YCNghiPhep
 	{
+		[Bindable]
 		public var id:String;
+		
+		[Bindable]
 		public var nhanvienid:String;
+		
+		[Bindable]
 		public var lydo:String;
+		
+		[Bindable]
 		public var loainghiid:String;
+		
+		[Bindable]
 		public var tungay:String;
+		
+		[Bindable]
 		public var toingay:String;
+		
+		[Bindable]
 		public var canghi:String;
+		
+		[Bindable]
 		public var trangthai:String;
+		
+		[Bindable]
 		public var ngaytao:Date;
+		
 		public function YCNghiPhep(loainghiid:String,nhanvienid:String, lydo:String, tungay:String, 
 								   toingay:String, trangthai:String)
 		{

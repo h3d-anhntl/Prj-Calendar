@@ -8,40 +8,95 @@
 		 xmlns:NVien="net.prjcanlendar.component.NVien.*" xmlns:view="net.prjcanlendar.component.view.*" xmlns:skin="net.prjcanlendar.component.NVien.skin.*">
 	<fx:Script>
 		<![CDATA[
+			import mx.binding.utils.ChangeWatcher;
+			import mx.collections.ArrayCollection;
 			import mx.events.FlexEvent;
+			import mx.events.PropertyChangeEvent;
 			
+			import model.Nhanvien;
+			
+			import net.fproject.di.InstanceFactory;
 			import net.prjcanlendar.event.StatesEvents;
+			
+			import service.NhanVienService;
+			
+			import untils.DataUntils;
+			
+			
+			public function get nhanvienService():NhanVienService
+			{
+				return InstanceFactory.getInstance(NhanVienService);
+			}
 			
 			protected function group1_creationCompleteHandler(event:FlexEvent):void
 			{		
 				addEventListener('clickBt', nhanvienbt_clickHandler);
+				DataUntils.nhanviens = nhanvienService.getNhanVien() as ArrayCollection;
+				ChangeWatcher.watch(DataUntils.nhanviens, 'paginationResult',
+					function (e:PropertyChangeEvent):void
+					{
+						listnv = new ArrayCollection();
+						listnv = DataUntils.nhanviens;
+						var st:int = 0;
+						for each( var i:Nhanvien in listnv )
+						{
+							st += 1;
+							i.stt = st;
+						}
+					}
+				);
 			}
+			
+			[Bindable]
+			public var newNV:Nhanvien = new Nhanvien;
+			
+			[Bindable]
+			public var listnv:ArrayCollection;
+			
+			
+			private var _isNhanVien:Boolean;
 			
 			protected function nhanvienbt_clickHandler(e:StatesEvents):void
 			{
 				if( currentState == "nhanviennew"){					
 					currentState = "nhanvien";
+					DataUntils.nhanviens = new ArrayCollection;
+					DataUntils.nhanviens = nhanvienService.getNhanVien() as ArrayCollection;
+					ChangeWatcher.watch(DataUntils.nhanviens, 'paginationResult',
+						function (e:PropertyChangeEvent):void
+						{
+							/*listnv = new ArrayCollection();*/
+							listnv = DataUntils.nhanviens;
+							var st:int = 0;
+							for each( var i:Nhanvien in listnv )
+							{
+								st += 1;
+								i.stt = st;
+							}
+						}
+					);
+					
 				}
 				else{
 					if(e.idBt == "bttaoNV"){
 						currentState = "nhanviennew";
+						newNV = new Nhanvien;
 					}
 					else if(e.idBt == "btHuy"){
 						currentState = "nhanvien";
 					}
 					else if(e.idBt == "btNV"){
 						currentState = "nhanvien";
-					}	
+					}
 				}
-				
 			}
-			
 			protected function group1_addedToStageHandler(event:Event):void
 			{
-				// TODO Auto-generated method stub
 				currentState = "nhanvien";
 			}
-
+			
+			[Bindable]
+			public var nhanVien:Nhanvien = new Nhanvien;
 		]]>
 	</fx:Script>
 	
@@ -49,10 +104,14 @@
 		<s:State name="nhanvien" />
 		<s:State name="nhanviennew"/>
 	</s:states>
-	<NVien:NhanVienView id="nhanvienbt" width="100%" height="100%" includeIn="nhanvien" >
+	<NVien:NhanVienView id="nhanvienbt" width="100%" height="100%"
+						includeIn="nhanvien" listNV1="@{listnv}" >
 		
 	</NVien:NhanVienView>
-	<!--<NVien:NhanVien id="nhanvienbt" width="100%" height="100%" includeIn="nhanvien" ></NVien:NhanVien>-->
 	
-	<skin:NhanVienNew id="nhanviennewbt" width="100%" height="100%" includeIn="nhanviennew"></skin:NhanVienNew>
+	<NVien:NhanVienNewView id="nhanviennewbt" width="100%" height="100%" 
+						   includeIn="nhanviennew" user="@{newNV}">
+		
+	</NVien:NhanVienNewView>
+	
 </s:Group>

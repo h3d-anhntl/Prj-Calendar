@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services-config>
+    <services>
+        <service id="pkService"
+            class="flex.messaging.services.RemotingService"
+            messageTypes="flex.messaging.messages.RemotingMessage">
+            <destination id="schedule-server">
+                <channels>
+                    <channel ref="scheduleServer"/>
+                </channels>
+                <properties>
+                    <source>*</source>
+                </properties>
+            </destination>
+        </service>
+    </services>
+    <channels>
+        <channel-definition id="scheduleServer"
+            class="net.fproject.rpc.JSONChannel">
+            <endpoint uri="http://localhost/yii2ad/backend/web"/>
+        </channel-definition>
+    </channels>
+</services-config>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<fprj:CalendarRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+                   xmlns:s="library://ns.adobe.com/flex/spark" 
+                   xmlns:mx="library://ns.adobe.com/flex/mx"  
+                   xmlns:fb="http://ns.adobe.com/flashbuilder/2009"
+                   width="5"
+				   xmlns:fprj="http://f-project.net/xmlns/fprj/2013">
+  
+  <fx:Script fb:purpose="styling">
+    <![CDATA[
+      static private const contentFill:Array = ["bgFill"];
+      
+      /**
+       * @private
+       */
+      override protected function get backgroundItems():Array {return contentFill;}
+      
+       static private const borderStroke:Array = ["bStroke"]; 
+      
+      /**
+       * @private
+       */
+       override protected function get borderItems():Array {return borderStroke;} 
+            
+    ]]>
+  </fx:Script>
+  
+  <fprj:states>
+    <s:State name="normal" />
+    <s:State name="hovered" />
+    <s:State name="selected" />
+    <s:State name="selectedAndHovered" />
+  </fprj:states>  
+  
+  <s:Rect id="background" top="0" bottom="0" right="0" left="0"  >   
+    <s:fill>
+      <!--- @private -->      
+      <s:SolidColor id="bgFill" />                    
+    </s:fill>
+
+  </s:Rect>
+  
+  <s:Rect width="100%" height="100%" top="1" bottom="1" right="1" left="1" radiusX="0" >
+    <s:stroke>
+      <!--- @private -->
+      <s:LinearGradientStroke rotation="90" pixelHinting="true" weight="2">
+        <s:GradientEntry color="0xf4e0e0" alpha="0.3" />
+        <s:GradientEntry color="0xf4e0e0" alpha="0.4" />
+        <s:GradientEntry color="0xF4E0E0" alpha="0.3" />
+      </s:LinearGradientStroke>      
+    </s:stroke>
+  </s:Rect>
+  
+  <s:Rect width="100%" height="100%" top="0" bottom="0" right="0" left="0" radiusX="0" >
+    <s:stroke>
+      <s:SolidColorStroke color="0x666666" pixelHinting="true" />           
+    </s:stroke>
+  </s:Rect>
+            
+</fprj:CalendarRenderer>

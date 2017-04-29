@@ -72,15 +72,15 @@
 	<s:Button label="Nhân viên" styleName="childMenu" skinClass="net.prjcanlendar.component.ButtonSkin" 
 			  id="btnhanvien" click="nhanvien_clickHandler(event)">		
 	</s:Button>
-	<s:Button label="Tài khoản" styleName="childMenu" skinClass="net.prjcanlendar.component.ButtonSkin"
+	<s:Button label="Tài khoản" styleName="nodeMenu" skinClass="net.prjcanlendar.component.ButtonSkin"
 			  id="btTaikhoan" click="btTaikhoan_clickHandler(event)">
 		
 	</s:Button>
 	<s:Label text="Nghỉ phép" styleName="nodeMenu" >		
 	</s:Label>
-	<s:Button label="Yêu cầu nghỉ phép"  styleName="childMenu" skinClass="net.prjcanlendar.component.ButtonSkin" 
+	<!--<s:Button label="Yêu cầu nghỉ phép"  styleName="childMenu" skinClass="net.prjcanlendar.component.ButtonSkin" 
 			  id="btycnghiphep" click="ycnghiphep_clickHandler(event)">		
-	</s:Button>
+	</s:Button>-->
 	<s:Button label="Lịch sử nghỉ" styleName="childMenu" skinClass="net.prjcanlendar.component.ButtonSkin" 
 			  id="btlsnghi" click="lsnghi_clickHandler(event)">		
 	</s:Button>	

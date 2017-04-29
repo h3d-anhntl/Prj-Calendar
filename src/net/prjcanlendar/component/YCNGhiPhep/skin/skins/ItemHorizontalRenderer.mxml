@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<fprj:CalendarRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark"                    
+					   xmlns:fb="http://ns.adobe.com/flashbuilder/2009"
+					   minHeight="20" depth="0" depth.selected="1"
+					   xmlns:fprj="http://f-project.net/xmlns/fprj/2013">
+	
+	<fx:Script fb:purpose="styling">
+		<![CDATA[
+			import mx.utils.ColorUtil;
+			
+			import net.fproject.calendar.components.supportClasses.CalendarRenderItem;
+			import net.fproject.calendar.components.supportClasses.CalendarUtil;
+			import net.fproject.utils.ColorUtil;
+			static private const contentFill:Array = ["bgFill"];
+			
+			/**
+			 * @private
+			 */
+			override protected function get backgroundItems():Array {return contentFill;}
+			
+			static private const borderStroke:Array = ["bStroke"];
+			
+			/**
+			 * @private
+			 */
+			override protected function get borderItems():Array {return borderStroke;}
+			
+			/**
+			 * @private
+			 * 
+			 * Hides the start time label if the range displayed starts at the first hour of a day.
+			 */
+			override protected function getStartTimeLabel(item:CalendarRenderItem):String {
+				return CalendarUtil.isStartOfDay(range[0]) ? null : super.getStartTimeLabel(item);
+			}
+			
+			/**
+			 * @private
+			 * 
+			 * Hides the end time label if the range displayed ends at the first hour of a day.
+			 */
+			override protected function getEndTimeLabel(item:CalendarRenderItem):String {
+				return CalendarUtil.isStartOfDay(range[1]) ? null : super.getEndTimeLabel(item);
+			}
+			
+			/**
+			 * @private
+			 */  
+			override protected function applyContentBackgroundColorAndAlpha():void {
+				super.applyContentBackgroundColorAndAlpha();
+				
+				var color:uint = bgFill.color;
+				bgFill3.color =  mx.utils.ColorUtil.adjustBrightness(color, -20);
+				bgFill3.alpha = bgFill.alpha;
+				
+				var rgb:Object = net.fproject.utils.ColorUtil.uintToRGB(color);        
+				var l:Number = 0.3 * rgb.r + 0.59 * rgb.g+ 0.11 * rgb.b;        
+				var textColor:uint = l>150 ? 0 : 0xffffff;
+				labelDisplay.setStyle("color", textColor);
+				startTimeLabelDisplay.setStyle("color", textColor);
+				beforeIconFill.color = afterIconFill.color = exceptionIconFill.color = occurrenceIconFill.color = textColor;
+				if (endTimeLabelDisplay != null) {
+					endTimeLabelDisplay.setStyle("color", textColor);
+				}
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fprj:states>
+		<s:State name="normal" />
+		<s:State name="hovered" />
+		<s:State name="selected" />
+		<s:State name="selectedAndHovered" basedOn="selected" />
+		<s:State name="edited" basedOn="selected" />
+	</fprj:states>  
+	
+	<fprj:transitions>
+		<s:Transition fromState="*" toState="*" >
+			<s:Parallel duration="100" target="{bgFill}">
+				<s:AnimateColor  />
+				<s:Fade />  
+			</s:Parallel>      
+		</s:Transition>                  
+	</fprj:transitions>
+	
+	<!--- @private -->
+	<s:Rect id="background" width="100%" height="100%" radiusX="5">
+		<s:fill>
+			<!--- @private -->
+			<s:LinearGradient rotation="90">
+				<s:GradientEntry id="bgFill" ratio="0" />        
+				<s:GradientEntry id="bgFill3" ratio="1" />
+			</s:LinearGradient>
+		</s:fill>
+	</s:Rect>  
+	
+	<s:Rect width="100%" height="100%" top="0" bottom="0" right="0" left="0" radiusX="5" >
+		<s:stroke>
+			<s:SolidColorStroke color="0x000000" pixelHinting="true" />           
+		</s:stroke>
+	</s:Rect>
+	
+	<!-- highlight -->
+	<s:Rect width="100%" height="50%" maxHeight="10" top="2" radiusX="5" >
+		<s:fill>
+			<s:LinearGradient rotation="90">
+				<s:GradientEntry color="0xffffff" alpha="0.5" ratio="0" />
+				<s:GradientEntry color="0xffffff" alpha="0.0" ratio="1" />
+			</s:LinearGradient>
+		</s:fill>
+	</s:Rect>
+	
+	<s:Rect width="100%" height="100%" top="1" bottom="1" right="1" left="1" radiusX="5" >
+		<s:stroke>
+			<s:LinearGradientStroke rotation="90" pixelHinting="true">
+				<s:GradientEntry color="0xF4E0E0" alpha="0.7" />
+				<s:GradientEntry color="0xF4E0E0" alpha="0.4" />
+				<s:GradientEntry color="0xF4E0E0" alpha="0.7" />
+			</s:LinearGradientStroke>      
+		</s:stroke>
+	</s:Rect>
+	
+	<!-- shadow -->
+	<s:Rect width="100%" height="30%" bottom="0" maxHeight="10" radiusX="5">
+		<s:fill>
+			<s:LinearGradient rotation="90">
+				<s:GradientEntry color="0x000000" alpha="0.0" ratio="0" />
+				<s:GradientEntry color="0x000000" alpha="0.3" ratio="1" />
+			</s:LinearGradient>
+		</s:fill>
+	</s:Rect>
+	
+	<s:HGroup width="100%" left="3" right="3" top="3" bottom="3" verticalAlign="middle" clipAndEnableScrolling="true">
+		
+		<!--- @copy com.ibm.com.elixir.calendar.supportClasses.CalendarRenderer#beforeIcon -->
+		<s:Path id="beforeIcon" 
+				data="M 0 3 L 5 0 L 5 5 Z">
+			<s:fill>
+				<s:SolidColor id="beforeIconFill" color="0x000000" />
+			</s:fill>
+		</s:Path>
+		
+		<!--- @copy com.ibm.com.elixir.calendar.supportClasses.CalendarRenderer#occurrenceIcon --> 
+		<s:Path id="occurrenceIcon" includeInLayout="false"
+				data="M 1 6 Q 10 -2 13 8 Q 10 -4 1 6  
+				M 14 8 Q 6 18 1 8 Q 6 20 14 8
+				M 0 9 L 4 9 L 2 5 L 0 9
+				M 10 6 L 14 6 L 12 10 L 10 6" >
+			<s:fill>
+				<!--- @private -->
+				<s:SolidColor id="occurrenceIconFill" color="0x000000" />
+			</s:fill>
+		</s:Path>
+		
+		<!--- @copy com.ibm.com.elixir.calendar.supportClasses.CalendarRenderer#exceptionIcon -->
+		<s:Path id="exceptionIcon"               
+				data="M 1 6 Q 10 -2 13 8 Q 10 -4 1 6  
+				M 14 8 Q 6 18 1 8 Q 6 20 14 8
+				M 0 9 L 4 9 L 2 5 L 0 9
+				M 10 6 L 14 6 L 12 10 L 10 6
+				M 0 0 L 15 15 L 13 15 L 0 0
+				M 15 0 L 0 15 L 2 15 L 15 0" >
+			<s:fill>
+				<!--- @private -->
+				<s:SolidColor id="exceptionIconFill" color="0x00000" />
+			</s:fill>
+		</s:Path>
+		
+		<!--- @copy com.ibm.com.elixir.calendar.skins.spark.supportC lasses.CalendarRenderer#startTimeLabelDisplay -->
+		<s:Label id="startTimeLabelDisplay" maxDisplayedLines="1" fontSize="11" fontWeight="bold" />
+		
+		<!--- @copy com.ibm.com.elixir.calendar.skins.spark.supportClasses.CalendarRenderer#labelDisplay -->
+		<s:Label id="labelDisplay" width="100%" maxDisplayedLines="1" fontSize="11" />
+		
+		<!--- @copy com.ibm.com.elixir.calendar.skins.spark.supportC lasses.CalendarRenderer#startTimeLabelDisplay -->
+		<s:Label id="endTimeLabelDisplay" maxDisplayedLines="1" fontSize="11" fontWeight="bold" includeIn="edited" />
+		
+		<!--- @copy com.ibm.com.elixir.calendar.supportClasses.CalendarRenderer#afterIcon -->
+		<s:Path id="afterIcon" 
+				data="M 0 0 L 5 3 L 0 5 Z">
+			<s:fill>
+				<s:SolidColor id="afterIconFill" color="0x000000" />
+			</s:fill>
+		</s:Path>
+		
+	</s:HGroup>     
+	
+</fprj:CalendarRenderer>

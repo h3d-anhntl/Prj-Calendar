@@ -17,13 +17,12 @@
 				dataProvider="{employees}">
 		<s:columns>
 			<s:ArrayList>
-				<s:GridColumn dataField="STT" headerText="STT" width="40"/>
-				<s:GridColumn dataField="name" headerText="Tên"/>
-				<s:GridColumn dataField="phoneNumber" headerText="Số điện thoại" />
-				<s:GridColumn dataField="Email" headerText="Email công việc" />
-				<s:GridColumn dataField="department" headerText="Phòng/Ban" />
-				<s:GridColumn dataField="office" headerText="Chức danh công việc" />				
-				<s:GridColumn dataField="manager" headerText="Quản lý" />
+				<s:GridColumn dataField="stt" headerText="STT" width="40"/>
+				<s:GridColumn dataField="hoVaTen" headerText="Tên"/>
+				<s:GridColumn dataField="soDienThoai" headerText="Số điện thoại" />
+				<s:GridColumn dataField="email" headerText="Email công việc" />
+				<s:GridColumn dataField="phongBan.tenPhongBan" headerText="Phòng/Ban" />
+				<s:GridColumn dataField="chucVu.tenChucVu" headerText="Chức danh công việc" />	
 			</s:ArrayList>
 		</s:columns>
 	</s:DataGrid>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+          xmlns:s="library://ns.adobe.com/flex/spark" 
+          xmlns:mx="library://ns.adobe.com/flex/mx"
+          gap="0" xmlns:recurrence="components.recurrence.*" xmlns:recurrence1="net.prjcanlendar.component.YCNGhiPhep.skin.components.recurrence.*" >
+  
+  <s:Label text="@Resource(bundle='calendarsample', key='calendarsample.recurrence.ruleeditor.title.iCalendarRecRule')" 
+           textAlign="left" width="100%" fontWeight="bold" fontSize="11"/>
+  
+  <s:Line width="100%">
+    <s:stroke>
+      <s:SolidColorStroke color="0xccccc" />
+    </s:stroke>
+  </s:Line>
+  
+  <mx:Spacer height="10"/>
+  
+  <s:Group width="100%">
+    <s:HGroup id="iCalPane" width="100%" verticalAlign="bottom">
+      <s:RichText id="ical" />
+      <s:Button id="editButton" label="@Resource(bundle='calendarsample', key='calendarsample.properties.button.edit')"/>
+    </s:HGroup>
+    <recurrence1:TextRuleEditor id="textEditor" width="100%" visible="false" />
+  </s:Group>
+  
+  <mx:Spacer height="10" width="100%"/>
+  
+</s:VGroup>

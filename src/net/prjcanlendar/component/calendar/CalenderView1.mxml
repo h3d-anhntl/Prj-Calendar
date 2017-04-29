@@ -14,14 +14,14 @@
 			import spark.events.IndexChangeEvent;
 			
 			import model.CalendarItem;
-			import model.NhanVien;
+			import model.Nhanvien;
 			
 			import net.fproject.calendar.components.DateInterval;
 			import net.fproject.calendar.events.CalendarEvent;
 			import net.fproject.core.TimeUnit;
 			import net.fproject.ui.misc.Alert;
 			
-			public var nv:model.NhanVien = new model.NhanVien;
+			public var nv:model.Nhanvien = new model.Nhanvien;
 			
 			protected function todayButton_clickHandler(event:MouseEvent):void
 			{

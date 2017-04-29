@@ -12,7 +12,7 @@ package net.prjcanlendar.component.TaiKhoan
 	import spark.components.Button;
 	import spark.components.supportClasses.SkinnableComponent;
 	
-	import model.TaiKhoan;
+	import model.Taikhoan;
 	
 	import net.fproject.di.Injector;
 	import net.prjcanlendar.component.form.FormTaoTaiKhoanPopup;
@@ -26,11 +26,11 @@ package net.prjcanlendar.component.TaiKhoan
 		
 		[Bindable]
 		public var dbTaikhoan:ArrayCollection = new ArrayCollection([
-			new TaiKhoan("Nguyễn Văn Thanh","thanhnv","a12345","user","thanhnv@gmail.com"),
-			new TaiKhoan("Nguyễn Thị Hương","huongnt","a12345","user","huongnt@gmail.com"),
-			new TaiKhoan("Phùng Văn Hà","hapv","a12345","user","hapv@gmail.com"),
-			new TaiKhoan("Đỗ Văn Tú","tudv","a12345","user","tudvv@gmail.com"),
-			new TaiKhoan("Nguyễn Vân Anh","anhnv","a12345","user","anhnv@gmail.com")
+			new Taikhoan("Nguyễn Văn Thanh","thanhnv","a12345","user","thanhnv@gmail.com"),
+			new Taikhoan("Nguyễn Thị Hương","huongnt","a12345","user","huongnt@gmail.com"),
+			new Taikhoan("Phùng Văn Hà","hapv","a12345","user","hapv@gmail.com"),
+			new Taikhoan("Đỗ Văn Tú","tudv","a12345","user","tudvv@gmail.com"),
+			new Taikhoan("Nguyễn Vân Anh","anhnv","a12345","user","anhnv@gmail.com")
 		]);
 		
 		public function btTaoMoiTK_clickHandler(event:MouseEvent):void

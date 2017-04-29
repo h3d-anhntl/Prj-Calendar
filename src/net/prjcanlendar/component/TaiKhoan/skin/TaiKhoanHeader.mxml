@@ -6,7 +6,7 @@
 	
 	
 	<s:layout>
-		<s:VerticalLayout  padding="35"></s:VerticalLayout>
+		<s:VerticalLayout  padding="25"></s:VerticalLayout>
 	</s:layout>
 	
 	<s:Label text="Quản lý tài khoản" fontSize="20" fontWeight="bold" width="100%" height="100%">		

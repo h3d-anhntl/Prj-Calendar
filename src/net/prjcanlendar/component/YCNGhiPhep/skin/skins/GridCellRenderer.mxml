@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<fprj:CalendarGridRendererBase
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:fprj="http://f-project.net/xmlns/fprj/2013"
+	clipAndEnableScrolling="true">
+	
+	<fx:Script>
+		<![CDATA[
+			import net.fproject.calendar.supportClasses.CalendarRenderData;
+			
+			import net.fproject.calendar.components.DateInterval;
+			
+			protected function group1_clickHandler(event:MouseEvent):void
+			{
+				var rd:CalendarRenderData = data as CalendarRenderData;
+				
+				rd.calendarControl.referenceDate = rd.startDate;
+				rd.calendarControl.dateInterval = DateInterval.DAY;        
+			}
+			
+			
+			protected function group1_rollOverHandler(event:MouseEvent):void
+			{
+				labelDisplay.setStyle("textDecoration", "underline");
+			}
+			
+			
+			protected function group1_rollOutHandler(event:MouseEvent):void
+			{
+				labelDisplay.setStyle("textDecoration", "none");
+			}
+			
+		]]>
+	</fx:Script>   
+	
+	<fprj:states>
+		<s:State name="normal" />
+		<s:State name="today" />
+		<s:State name="out" />
+	</fprj:states>
+	
+	<fx:Metadata>
+		[ResourceBundle("calendar")]
+	</fx:Metadata>
+	
+	<s:Rect width="100%" height="100%" displayObjectSharingMode="usesSharedObject">        
+		<s:fill>
+			<!--- @private -->
+			<s:SolidColor alpha="0.5" color="0xFFFFFF" color.today="0xFFCC00" />       
+		</s:fill>           
+	</s:Rect>
+	
+	<s:Rect left="1" right="0" bottom="0" top="1" includeIn="today">
+		<s:stroke>
+			<s:SolidColorStroke color="0xEEBB00" />
+		</s:stroke>
+	</s:Rect>
+	
+	<!--- @private -->  
+	<!-- The non working ranges -->
+	<fprj:TimeRangeGroup id="nonWorkingRanges" 
+							   width="100%" height="100%"
+							   vertical="false">
+		<fprj:rangeRenderer>
+			<fx:Component>
+				<s:Rect displayObjectSharingMode="usesSharedObject">
+					<s:fill>
+						<s:SolidColor color="0xE5E5E5" alpha="0.5" />  
+					</s:fill>          
+				</s:Rect>  
+			</fx:Component>      
+		</fprj:rangeRenderer>
+	</fprj:TimeRangeGroup>
+	
+	<!-- The time selection -->
+	<fprj:TimeRangeGroup id="timeSelection" 
+							   left="1" right="0" 
+							   top="1" bottom="0"                                 
+							   vertical="false" >
+		<fprj:rangeRenderer>
+			<fx:Component>
+				<s:Rect width="100%" height="100%" >
+					<s:fill>
+						<s:SolidColor color="0xA8C6EE" alpha="0.5" />  
+					</s:fill>
+				</s:Rect>         
+			</fx:Component>      
+		</fprj:rangeRenderer>
+	</fprj:TimeRangeGroup>
+	
+	<!-- The time selection cursor -->
+	<!--- @private -->
+	<fprj:TimeRangeGroup id="timeSelectionCursor" left="1" right="0" 
+							   top="1" bottom="0" vertical="false">
+		<fprj:rangeRenderer>
+			<fx:Component>
+				<s:Rect>
+					<s:stroke>
+						<s:SolidColorStroke color="0x7B99C1" weight="2" />
+					</s:stroke>
+				</s:Rect>  
+			</fx:Component>      
+		</fprj:rangeRenderer>
+	</fprj:TimeRangeGroup>  
+	
+	<!-- Left cell separator -->  
+	<s:Line left="0" top="0" bottom="-1" depth="3" displayObjectSharingMode="usesSharedObject">
+		<s:stroke>
+			<s:SolidColorStroke color="0xcccccc" />
+		</s:stroke>
+	</s:Line>
+	
+	<!-- Top cell separator -->
+	<s:Line top="0" left="0" right="-1" displayObjectSharingMode="usesSharedObject">
+		<s:stroke>
+			<s:SolidColorStroke color="0xcccccc" />
+		</s:stroke>
+	</s:Line>
+	
+	<!--- @private -->    
+	<s:Label id="labelDisplay" top="5" right="3" fontSize="10"  
+			 depth="4" maxDisplayedLines="1"  
+			 fontWeight="normal" fontWeight.today="bold"
+			 color="0x000000" color.today="0xFF0000" color.out="0x888888" 
+			 mouseDown="event.stopImmediatePropagation()" 
+			 click="group1_clickHandler(event)" 
+			 rollOver="group1_rollOverHandler(event)" 
+			 rollOut="group1_rollOutHandler(event)"/>  
+	
+</fprj:CalendarGridRendererBase>

@@ -11,12 +11,12 @@
 			import mx.collections.ArrayCollection;
 			import mx.events.FlexEvent;
 			
-			import model.NhanVien;
+			import model.Nhanvien;
 			import model.ThuHeader;
 			[Bindable]
 			public var listThu:ArrayCollection = new ArrayCollection;
 			
-			public var nv:model.NhanVien = new model.NhanVien;
+			public var nv:model.Nhanvien = new model.Nhanvien;
 			
 			
 			
@@ -24,7 +24,7 @@
 			{
 				// TODO Auto-generated method stub
 				var listNV:ArrayCollection = new ArrayCollection;
-				nv.tenviettat = "Huong";
+				nv.tenVietTat = "Huong";
 				listNV.addItem(nv);
 				listNV.addItem(nv);
 				listNV.addItem(nv);

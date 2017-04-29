@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+         xmlns:s="library://ns.adobe.com/flex/spark" 
+         xmlns:mx="library://ns.adobe.com/flex/mx" 
+         implements="net.prjcanlendar.component.YCNGhiPhep.skin.components.recurrence.IRecurrenceRuleEditor"         
+         paddingBottom="5" paddingLeft="5" paddingRight="5" paddingTop="5"
+         gap="10" 
+         creationComplete="init()">
+  <fx:Script>
+    <![CDATA[
+      import net.fproject.calendar.recurrence.RRule;
+      
+      import mx.events.FlexEvent;
+      
+      private function init():void {
+        buildUI();
+      }
+      
+      public function set recurrenceRule(value:RRule):void {
+        var r:RRule = value;
+        _valid = true;
+        
+        if (value.freq == RRule.DAILY) {
+          
+          if (value.byDay.length != 0) {
+            
+            if (value.byDay.join(",") == "MO,TU,WE,TH,FR") {            
+              radioGroup.selectedValue = "radio2";
+            } else {
+              _valid = false
+            }
+            
+          } else {
+            
+            radioGroup.selectedValue = "radio1";
+            interval.text = value.interval.toString();
+          }         
+          
+          if (_valid) {
+            _valid = Util.checkDefaults(value, ["freq", "byDay", "interval", "until", "count"]);
+          }  
+          
+        } else {
+          
+          //default
+          reset();        
+          _valid = false;  
+        }
+      }
+      
+      public function get recurrenceRule():RRule {
+        
+        var r:RRule;
+        
+        if (radioGroup.selectedValue == "radio1") {
+          
+          r = new RRule();
+          r.freq = RRule.DAILY;
+          
+          var inter:int = parseInt(interval.text);
+          
+          if (inter > 1) {
+            r.interval = inter;
+          }
+          
+        } else {
+          
+          r = new RRule("FREQ=DAILY;BYDAY=MO,TU,WE,TH,FR");
+          
+        }
+        
+        return r; 
+      }
+      
+      private function buildUI():void {
+        //build first choice
+        var format:String = resourceManager.getString("calendarsample", "calendarsample.recurrence.ruleeditor.daily.interval", ["|$interval|"]);
+        
+        Util.buildUI(this, choice1, format, handlerChoice1);
+        
+      }
+      
+      private function handlerChoice1(e:Event):void {
+        moveRadio(1);
+        dispatch();
+      } 
+      
+      private function validateInterval():void {               
+        var i:int = Util.validateInt(interval.text, true);
+        interval.text = i.toString();
+        radioGroup.selectedValue = "radio1";
+        dispatch();
+      }
+      
+      private function dispatch():void {
+        dispatchEvent(new Event("ruleChanged", true));        
+      }
+      
+      public function reset():void {
+        interval.text = "1";
+        radioGroup.selectedValue = "radio1"; 
+        _valid = true;
+      }
+      
+      private function moveRadio(id:int):void {
+        radioGroup.selectedValue = "radio"+id;
+      }
+      
+      private var _valid:Boolean = true;
+      
+      public function isValid():Boolean {
+        return _valid;
+      }
+
+
+      protected function radioGroup_changeHandler(event:Event):void
+      {
+        dispatch();
+      }
+
+    ]]>
+  </fx:Script>
+  
+  <fx:Declarations>
+    <s:RadioButtonGroup id="radioGroup" change="radioGroup_changeHandler(event)" />
+  </fx:Declarations>
+
+  
+  <s:HGroup verticalAlign="middle" gap="5">
+    <s:RadioButton id="radio1" groupName="radioGroup" value="radio1" selected="true" />
+    <s:HGroup id="choice1" gap="5" verticalAlign="middle">
+      <s:TextInput id="interval"  width="37" text="1" change="validateInterval()"/>
+    </s:HGroup>
+    <s:HGroup id="choice2" verticalAlign="middle" gap="5">
+      <s:RadioButton groupName="radioGroup" value="radio2" />
+      <s:Label text="@Resource(bundle='calendarsample', key='calendarsample.recurrence.ruleeditor.label.everyWeekday')" 
+               click="moveRadio(2); dispatch()"/>  
+    </s:HGroup>
+  </s:HGroup>
+  
+</s:VGroup>

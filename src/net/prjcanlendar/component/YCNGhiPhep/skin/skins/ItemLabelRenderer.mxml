@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<fprj:CalendarRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+                   xmlns:s="library://ns.adobe.com/flex/spark"                    
+                   clipAndEnableScrolling="true"
+				   xmlns:fprj="http://f-project.net/xmlns/fprj/2013">
+    
+  <fprj:states>
+    <s:State name="normal" />
+    <s:State name="hovered" />
+    <s:State name="selected" />
+    <s:State name="selectedAndHovered" />
+  </fprj:states>  
+  
+  <fx:Script>
+    <![CDATA[
+		import net.fproject.calendar.components.supportClasses.CalendarRenderItem;
+		import net.fproject.utils.ResourceUtil;    
+           
+      /**
+       * @private
+       */  
+      override protected function getSummaryLabel(item:CalendarRenderItem):String {        
+        return resourceManager.getString(ResourceUtil.FPRJ_CALENDAR_BUNDLE, "event.label.format.month.mode", 
+          [formatDate(range[0]), super.getSummaryLabel(item)]);
+      }           
+            
+    ]]>
+  </fx:Script>
+  
+  <!-- Glass view to catch the mouse events -->
+  <s:Rect width="100%" height="100%">
+    <s:fill>
+      <s:SolidColor color="0xFF0000" alpha="0" />
+    </s:fill>
+  </s:Rect>
+  
+  <s:HGroup width="100%" verticalAlign="middle" gap="1" >
+    <!--- @copy com.ibm.com.elixir.calendar.skins.spark.supportClasses.CalendarRenderer#occurrenceIcon --> 
+    <s:Path id="occurrenceIcon" 
+            data="M 1 6 Q 10 -2 13 8 Q 10 -4 1 6  
+            M 14 8 Q 6 18 1 8 Q 6 20 14 8
+            M 0 9 L 4 9 L 2 5 L 0 9
+            M 10 6 L 14 6 L 12 10 L 10 6" >
+      <s:fill>
+        <s:SolidColor color="0x000000" />
+      </s:fill>
+    </s:Path>
+    
+    <!--- @copy com.ibm.com.elixir.calendar.supportClasses.CalendarRenderer#exceptionIcon -->
+    <s:Path id="exceptionIcon"               
+            data="M 1 6 Q 10 -2 13 8 Q 10 -4 1 6  
+            M 14 8 Q 6 18 1 8 Q 6 20 14 8
+            M 0 9 L 4 9 L 2 5 L 0 9
+            M 10 6 L 14 6 L 12 10 L 10 6
+            M 0 0 L 15 15 L 13 15 L 0 0
+            M 15 0 L 0 15 L 2 15 L 15 0" >
+      <s:fill>          
+        <s:SolidColor color="0x00000" />
+      </s:fill>
+    </s:Path>
+    
+    <!--- @copy com.ibm.com.elixir.calendar.skins.spark.supportClasses.CalendarRenderer#labelDisplay -->
+    <s:Label id="labelDisplay" width="100%" maxDisplayedLines="1" 
+             textDecoration="none" textDecoration.hovered="underline" textDecoration.selectedAndHovered="underline" 
+             color.selected="0xFF0000" color.selectedAndHovered="0xFF0000" fontSize="11"  />
+  </s:HGroup>               
+</fprj:CalendarRenderer>

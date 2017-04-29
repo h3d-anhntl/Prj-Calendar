@@ -4,7 +4,17 @@
 			   xmlns:mx="library://ns.adobe.com/flex/mx" 
 			   xmlns:core="net.fproject.gui.component.*"
 			   xmlns:gui="net.prjcanlendar.gui.*" currentState="bantin"
-			   xmlns:event="net.prjcanlendar.event.*" xmlns:skin="net.prjcanlendar.component.BanTin.skin.*" xmlns:skin1="net.prjcanlendar.component.NVien.skin.*" xmlns:skin2="net.prjcanlendar.component.LichSuNghi.skin.*" xmlns:component="net.prjcanlendar.component.*" xmlns:skin3="net.prjcanlendar.component.PheDuyet.skin.*" xmlns:skin4="net.prjcanlendar.component.YCNGhiPhep.skin.*" xmlns:Menu="net.prjcanlendar.component.Menu.*" xmlns:TaiKhoan="net.prjcanlendar.component.TaiKhoan.*" xmlns:skin5="net.prjcanlendar.component.TaiKhoan.skin.*">
+			   xmlns:event="net.prjcanlendar.event.*" 
+			   xmlns:skin="net.prjcanlendar.component.BanTin.skin.*" 
+			   xmlns:skin1="net.prjcanlendar.component.NVien.skin.*" 
+			   xmlns:skin2="net.prjcanlendar.component.LichSuNghi.skin.*"
+			   xmlns:component="net.prjcanlendar.component.*" 
+			   xmlns:skin3="net.prjcanlendar.component.PheDuyet.skin.*" 
+			   xmlns:skin4="net.prjcanlendar.component.YCNGhiPhep.skin.*"
+			   xmlns:Menu="net.prjcanlendar.component.Menu.*" 
+			   xmlns:TaiKhoan="net.prjcanlendar.component.TaiKhoan.*" 
+			   xmlns:skin5="net.prjcanlendar.component.TaiKhoan.skin.*"
+			   width="100%" height="100%">
 	
 	<fx:Style source="style.css" />
 	<fx:Style source="defaults.css" />
@@ -22,9 +32,7 @@
 				if(e.idBt == "btbantin"){
 					currentState = "bantin";
 				} else if( e.idBt == "btnhanvien"){
-					currentState = "nhanvien"
-				} else if( e.idBt == "btycnghiphep"){
-					currentState = "ycNghiphep"
+					currentState = "nhanvien";
 				} else if( e.idBt == "btlsnghi"){
 					currentState = "lsNghiphep";
 				} else if( e.idBt == "btpheduyetyc"){
@@ -56,7 +64,7 @@
 		</s:Group>
 		
 		<s:Group width="86%">
-			<skin:BanTin width="100%" height="620" includeIn="bantin">
+			<skin:BanTin width="100%" minHeight="620" includeIn="bantin">
 				
 			</skin:BanTin>
 			<!--<gui:NhanVien  height="620" includeIn="nhanvien">				
@@ -64,15 +72,15 @@
 			<!--<gui:NhanVienNew  height="620" includeIn="nhanvien">
 				
 			</gui:NhanVienNew>-->
-			<skin1:QLNhanvien width="100%" height="620" includeIn="nhanvien">
+			<skin1:QLNhanvien width="100%" height="620" includeIn="nhanvien" >
 				
 			</skin1:QLNhanvien>
 			<skin5:QLTaiKhoan width="100%" height="620" includeIn="qlTaikhoan">
 				
 			</skin5:QLTaiKhoan>
-			<skin4:YCNghiPhep width="100%" height="620" includeIn="ycNghiphep">
+			<!--<skin4:YCNghiPhep width="100%" height="620" includeIn="ycNghiphep">
 				
-			</skin4:YCNghiPhep>
+			</skin4:YCNghiPhep>-->
 			<skin2:LichSuNghi width="100%" height="620" includeIn="lsNghiphep">
 				
 			</skin2:LichSuNghi>

@@ -8,7 +8,32 @@
 @namespace PheDuyet "net.prjcanlendar.component.PheDuyet.*";
 @namespace TaiKhoan "net.prjcanlendar.component.TaiKhoan.*";
 @namespace calendar "net.prjcanlendar.component.calendar.*";
+@namespace fprj "http://f-project.net/xmlns/fprj/2013";
 
+NVien|NhanVienNewView{
+	skinClass: ClassReference("net.prjcanlendar.component.NVien.skin.NhanVienNew");
+}
+
+NVien|NhanVienNewCotentView{
+	skinClass:ClassReference("net.prjcanlendar.component.NVien.skin.NhanVienNewContentSkin");
+}
+
+fprj|CalendarSubColumnHeader{
+	skinClass: ClassReference("net.prjcanlendar.component.YCNGhiPhep.skin.skins.SubColumnHeaderSkin")
+}
+
+fprj|CalendarColumnHeader {
+	skinClass: ClassReference("net.prjcanlendar.component.YCNGhiPhep.skin.skins.ColumnHeaderSkin");
+}
+
+fprj|CalendarRowHeader {
+	skinClass: ClassReference("net.prjcanlendar.component.YCNGhiPhep.skin.skins.RowHeaderSkin");
+}
+
+fprj|Calendar
+{
+	skinClass:ClassReference("net.prjcanlendar.component.YCNGhiPhep.skin.skins.CalendarSkin");
+}
 calendar|CalendarView
 {
 	skinClass:ClassReference("net.prjcanlendar.component.calendar.skin.CalendarViewSkin");

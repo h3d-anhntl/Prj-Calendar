@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:HGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+          xmlns:s="library://ns.adobe.com/flex/spark" 
+          xmlns:mx="library://ns.adobe.com/flex/mx" 
+          implements="net.prjcanlendar.component.YCNGhiPhep.skin.components.recurrence.IRecurrenceRuleEditor"
+          verticalAlign="bottom">
+  
+  <fx:Script>
+    <![CDATA[
+      import net.fproject.calendar.recurrence.RRule;
+      
+      import flashx.textLayout.elements.TextFlow;
+      
+      import spark.utils.TextFlowUtil;
+      
+      private var _recurrenceRule:RRule;
+      
+      [Bindable]
+      private var _recurrenceRuleText:String;
+      
+      [Bindable]
+      [Embed(source='../../../../../../../../resources/yes.png')]
+      private var okImage:Class;
+      
+      [Bindable]      
+      [Embed(source='../../../../../../../../resources/no.png')]
+      private var koImage:Class;
+      
+      private function init():void {
+        
+        ruleTextInput.addEventListener(KeyboardEvent.KEY_DOWN, function(e:KeyboardEvent):void {
+          if (e.keyCode == Keyboard.ENTER) {
+            ok();
+          }
+        });
+        
+        //ruleTextInput.htmlText = decorateRuleText(_recurrenceRuleText);
+        ruleTextInput.textFlow = getRichTextFlow(_recurrenceRuleText);
+      }
+      
+      private var _exp:RegExp;
+      
+      public function getRichTextFlow(s:String):TextFlow {
+        if (s == null) {
+          return null;
+        }
+        
+        if (_exp == null) {
+          _exp = /(FREQ|UNTIL|COUNT|INTERVAL|BYSECOND|BYMINUTE|BYHOUR|BYDAY|BYMONTHDAY|BYYEARDAY|BYWEEKNO|BYMONTH|BYSETPOS|WKST)(( )*|=)+/g                            
+        }        
+
+        s = s.replace(_exp, "<span fontWeight='bold'>$&</span>");        
+        return TextFlowUtil.importFromString(s);
+      }
+      
+      private function validate():void {
+        try {
+          var s:String = ruleTextInput.text.toUpperCase();
+         
+          if (_recurrenceRule == null) {
+            _recurrenceRule = new RRule(s);
+          } else {
+            _recurrenceRule.parse(s);
+          }          
+          
+          setStatus(_recurrenceRule.validate());
+          
+        } catch (e:Error) {
+          setStatus(false);         
+        }               
+        //ruleTextInput.htmlText = decorateRuleText(s);
+        //ruleTextInput.textFlow = decorateRuleText(_recurrenceRuleText);        
+      }
+      
+      
+      public function reset():void {        
+        ruleTextInput.text = "";
+        _valid = false;
+        
+      }
+      
+      public function set recurrenceRule(value:RRule):void {
+        if (value == null) { 
+          _recurrenceRuleText = "";
+        } else {
+          _recurrenceRuleText = value.toString();          
+          if (ruleTextInput) {
+            //ruleTextInput.text = _recurrenceRuleText;
+            validate();     
+            ruleTextInput.textFlow = getRichTextFlow(_recurrenceRuleText);
+          }
+        }
+      }
+      
+      public function get recurrenceRule():RRule {
+        return _recurrenceRule;
+      }
+      
+      private var _valid:Boolean = true;
+      
+      private function setStatus(ok:Boolean):void {        
+        status.source = ok ? okImage : koImage;        
+        okButton.enabled = ok;        
+        _valid = ok;       
+      }
+      
+      public function isValid():Boolean {
+        return _valid;
+      }
+      
+      private function ok():void {
+        ruleTextInput.textFlow = getRichTextFlow(_recurrenceRuleText);
+        if (_valid) {
+          dispatchEvent(new Event('OK'));
+        }
+      }
+      
+    ]]>
+  </fx:Script>
+  
+  <s:Image id="status" source="{okImage}" />
+  <s:TextArea id="ruleTextInput" width="100%" heightInLines="1" editable="true"  change="validate()" />  
+  <s:Button id="okButton" label="OK" click="ok()"/>
+    
+</s:HGroup>

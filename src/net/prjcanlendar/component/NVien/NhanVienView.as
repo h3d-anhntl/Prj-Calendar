@@ -1,13 +1,19 @@
 package net.prjcanlendar.component.NVien
 {
 	
+	import flash.events.MouseEvent;
+	
+	import mx.binding.utils.ChangeWatcher;
 	import mx.collections.ArrayCollection;
 	import mx.controls.Button;
 	import mx.core.ClassFactory;
 	import mx.events.FlexEvent;
+	import mx.events.PropertyChangeEvent;
 	
 	import spark.components.supportClasses.SkinnableComponent;
 	import spark.events.IndexChangeEvent;
+	
+	import model.Nhanvien;
 	
 	import net.fproject.di.Injector;
 	import net.prjcanlendar.component.NVien.skin.NhanVienAvatar;
@@ -24,23 +30,16 @@ package net.prjcanlendar.component.NVien
 			var button:Button;
 		}
 		
-		import model.NhanVien;
-		
 		[Bindable]
-		public var nv:model.NhanVien = new model.NhanVien;
+		public var nv:model.Nhanvien = new model.Nhanvien;
 		
 		[Bindable]
 		public var listNV1:ArrayCollection;
 		
 		public function group1_creationCompleteHandler(event:FlexEvent):void
 		{
-			listNV1 = new ArrayCollection;
-			nv.hovaten = "Huong";
-			listNV1.addItem(nv);
-			listNV1.addItem(nv);
-			listNV1.addItem(nv);
-			listNV1.addItem(nv);
-			listNV1.addItem(nv);
+			if(listNVA.selectedItem)
+			nv = listNVA.selectedItem as Nhanvien;
 		}
 		
 		private var _isNhanVienTable:Boolean;
@@ -59,11 +58,17 @@ package net.prjcanlendar.component.NVien
 			return s;
 		}
 		
+		public function listNVA_clickHandler(event:MouseEvent):void
+		{
+			listNVA.selectedItem;
+		}
+		
 		[SkinPart(required="true",type="static")]
 		[EventHandling(event="change",handler="onButtonBarChange")]	
 		public var nhanVienHeader:NhanVienHeader;
 		
-		[SkinPart(required="true",type="static")]
+		[SkinPart(required="true",type="static")]		
+		[PropertyBinding(employees="listNV1@")]
 		public var nvtable:NhanVienTable;
 		
 		[Bindable]
@@ -72,6 +77,7 @@ package net.prjcanlendar.component.NVien
 		[SkinPart(required="true",type="static")]
 		[PropertyBinding(itemRenderer="nhanVienAvatar")]
 		[PropertyBinding(dataProvider="listNV1@")]
+		[EventHandling(event="click",handler="listNVA_clickHandler")]	
 		public var listNVA:CustomGridLayout;
 	}
 }

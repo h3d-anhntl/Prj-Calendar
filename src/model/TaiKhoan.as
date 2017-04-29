@@ -1,6 +1,9 @@
 package model
 {
-	public class TaiKhoan
+	import net.fproject.model.AbstractModel;
+
+	[RemoteClass(alias="FTaikhoan")]
+	public class Taikhoan extends AbstractModel
 	{
 		public var id:String;
 		public var taikhoan:String;
@@ -9,7 +12,7 @@ package model
 		public var phanquyen:String;
 		public var ngaytao:Date;
 		public var ghichu:String;
-		public function TaiKhoan(id:String, taikhoan:String, matkhau:String, phanquyen:String, nhanvienid:String)
+		public function Taikhoan(id:String, taikhoan:String, matkhau:String, phanquyen:String, nhanvienid:String)
 		{
 			this.id = id;
 			this.taikhoan = taikhoan;
