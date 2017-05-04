@@ -8,7 +8,7 @@ package model
 	{
 		
 		[Bindable]
-		public var id:int;
+		public var id:String;
 		
 		[Bindable]
 		public var hoVaTen:String;

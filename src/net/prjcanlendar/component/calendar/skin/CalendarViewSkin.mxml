@@ -77,7 +77,8 @@
 							 doubleClickEnabled="true"
 							 maxNumColumns="14" maxNumRows="8" scrollStep="2"
 							 minTimeOfDay="0am" maxTimeOfDay="12pm"
-							 showItemIndicators="true" minWidth="500">
+							 showItemIndicators="true" minWidth="500"
+							 >
 					<ns:dataDescriptor>
 						<ns:CalendarDataDescriptor labelField="name"/>
 					</ns:dataDescriptor>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%">
+	<!-- host component -->
+	<fx:Metadata>
+		[HostComponent("net.prjcanlendar.component.LichSuNghi.TaoMoiYCNghiPhepCNPopup")]
+	</fx:Metadata>
+	
+	<s:BorderContainer width="100%" height="100%">
+		<s:layout>
+			<s:VerticalLayout gap="0">
+				
+			</s:VerticalLayout>
+		</s:layout>
+		
+		<s:Label paddingBottom="10" paddingLeft="10" paddingTop="10"
+				 text="Tạo: Thông tin xin nghỉ chi tiết"/>
+		
+		<s:Button width="100%" height="30" enabled="false">		
+		</s:Button>
+		
+		<s:HGroup gap="0" padding="20">
+			<s:VGroup width="100" gap="0" horizontalAlign="center" verticalAlign="middle">
+				<s:Label paddingTop="30" text="Thời lượng"/>
+				<s:Label paddingTop="60" text="Lý do"/>
+			</s:VGroup>
+			<mx:VRule height="278">
+				
+			</mx:VRule>
+			<s:VGroup gap="0" horizontalAlign="left" paddingLeft="20" verticalAlign="middle" id="hgroupRadio">
+				
+				<s:HGroup gap="0" horizontalAlign="center" paddingBottom="20" paddingTop="20"
+						  verticalAlign="middle">
+					
+					<mx:DateField width="165" id="df_tungay" selectedDate="@{hostComponent.ycNghi.tuNgay}">
+						
+					</mx:DateField>
+					
+					<s:Label paddingLeft="10" paddingRight="10" text="-"/>
+					
+					<mx:DateField width="165" id="df_toingay" selectedDate="@{hostComponent.ycNghi.toiNgay}" >
+						
+					</mx:DateField>
+					
+					<s:Label paddingLeft="10" text="1 ngày"/>
+				</s:HGroup>
+				
+				<s:HGroup gap="0" horizontalAlign="center" paddingBottom="20" verticalAlign="middle">
+					<s:RadioButton selected="true" width="70" label="Sáng" id="ckbox_sang">
+						
+					</s:RadioButton>
+					<s:RadioButton width="70" label="Chiều" id="ckbox_chieu">
+						
+					</s:RadioButton>
+					<s:RadioButton  label="Cả ngày" id="ckbox_cangay">
+						
+					</s:RadioButton>
+				</s:HGroup>
+				
+				<s:TextArea width="350" id="txtar_lydo" text="@{hostComponent.ycNghi.lydo}">
+					
+				</s:TextArea>
+			</s:VGroup>
+		</s:HGroup>
+		<mx:HRule width="100%">
+			
+		</mx:HRule>
+		
+		<s:HGroup gap="0" paddingTop="10" paddingBottom="10" verticalAlign="middle" 
+				  horizontalAlign="right" paddingLeft="400">
+			<s:Button label="Gửi" color="red" id="btGui">
+				
+			</s:Button>
+			
+			<s:Label text="hoặc" paddingLeft="10" paddingRight="10" id="lblHoac">
+				
+			</s:Label>
+			
+			<s:Button label="Hủy bỏ" id="btHuy">
+				
+			</s:Button>	
+		</s:HGroup>
+	</s:BorderContainer>
+</s:Skin>

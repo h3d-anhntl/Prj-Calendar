@@ -8,39 +8,53 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import mx.binding.utils.ChangeWatcher;
 			import mx.events.FlexEvent;
+			import mx.events.PropertyChangeEvent;
 			
 			import model.Nhanvien;
 			import model.ThuHeader;
+			
+			import net.fproject.di.InstanceFactory;
+			
+			import service.NhanVienService;
+			
+			import untils.DataUntils;
 			[Bindable]
 			public var listThu:ArrayCollection = new ArrayCollection;
 			
 			public var nv:model.Nhanvien = new model.Nhanvien;
 			
-			
+			public function get nhanvienService():NhanVienService
+			{
+				return InstanceFactory.getInstance(NhanVienService);
+			}
 			
 			protected function group1_creationCompleteHandler(event:FlexEvent):void
 			{
-				// TODO Auto-generated method stub
-				var listNV:ArrayCollection = new ArrayCollection;
-				nv.tenviettat = "Huong";
-				listNV.addItem(nv);
-				listNV.addItem(nv);
-				listNV.addItem(nv);
-				listNV.addItem(nv);
 				
 				var listNVTheoThu:ArrayCollection = new ArrayCollection;
-				listNVTheoThu.addItem(listNV);
-				listNVTheoThu.addItem(listNV);
-				listNVTheoThu.addItem(listNV);
-				listNVTheoThu.addItem(listNV);
-				listNVTheoThu.addItem(listNV);
-				listNVTheoThu.addItem(listNV);				
-				listNVTheoThu.addItem(listNV);
-				
-				cangay.dataProvider = listNVTheoThu;
-				sang.dataProvider = listNVTheoThu;
-				chieu.dataProvider = listNVTheoThu;
+				var listNV:ArrayCollection = new ArrayCollection;
+				// TODO Auto-generated method stub
+				DataUntils.nhanviens = nhanvienService.getNhanVien() as ArrayCollection;
+				ChangeWatcher.watch(DataUntils.nhanviens , 'paginationResult',
+					function (e:PropertyChangeEvent):void
+					{
+						listNV = DataUntils.nhanviens;
+						
+						listNVTheoThu.addItem(listNV);
+						listNVTheoThu.addItem(listNV);
+						listNVTheoThu.addItem(listNV);
+						listNVTheoThu.addItem(listNV);
+						listNVTheoThu.addItem(listNV);
+						listNVTheoThu.addItem(listNV);				
+						listNVTheoThu.addItem(listNV);
+						
+						cangay.dataProvider = listNVTheoThu;
+						sang.dataProvider = listNVTheoThu;
+						chieu.dataProvider = listNVTheoThu;
+					}
+				);
 				
 				var listthu:ArrayCollection = new ArrayCollection;
 				var thu:model.ThuHeader = new model.ThuHeader;
@@ -96,15 +110,15 @@
 				</s:ButtonBar>
 			</s:Group>
 			
-			<s:Group width="60%">
+			<s:Group width="40%">
 				<s:Label fontSize="24">
 					Tháng 2 Năm 2017
 				</s:Label>
 			</s:Group>
 			
-			<s:Group width="30%">
+			<s:Group width="50%">
 				<s:layout>
-					<s:HorizontalLayout horizontalAlign="right" gap="0">
+					<s:HorizontalLayout horizontalAlign="right" gap="0" paddingRight="200">
 						
 					</s:HorizontalLayout>
 				</s:layout>

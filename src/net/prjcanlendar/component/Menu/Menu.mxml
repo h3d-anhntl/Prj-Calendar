@@ -67,9 +67,7 @@
 	<s:Button label="Bản Tin" styleName="nodeMenu" id="btbantin" 
 			  skinClass="net.prjcanlendar.component.ButtonSkin" click="bantin_clickHandler(event)">		
 	</s:Button>
-	<s:Label text="Quản lý nhân viên" styleName="nodeMenu" >		
-	</s:Label>
-	<s:Button label="Nhân viên" styleName="childMenu" skinClass="net.prjcanlendar.component.ButtonSkin" 
+	<s:Button label="Nhân viên" styleName="nodeMenu" skinClass="net.prjcanlendar.component.ButtonSkin" 
 			  id="btnhanvien" click="nhanvien_clickHandler(event)">		
 	</s:Button>
 	<s:Button label="Tài khoản" styleName="nodeMenu" skinClass="net.prjcanlendar.component.ButtonSkin"

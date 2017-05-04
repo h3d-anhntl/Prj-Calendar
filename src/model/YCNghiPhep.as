@@ -18,6 +18,9 @@ package model
 		public var tungay:String;
 		
 		[Bindable]
+		public var soNgay:String;
+		
+		[Bindable]
 		public var toingay:String;
 		
 		[Bindable]
@@ -29,15 +32,15 @@ package model
 		[Bindable]
 		public var ngaytao:Date;
 		
-		public function YCNghiPhep(loainghiid:String,nhanvienid:String, lydo:String, tungay:String, 
-								   toingay:String, trangthai:String)
+		public function YCNghiPhep(nhanvienid:String, lydo:String, tungay:String, 
+								   toingay:String, trangthai:String, soNgay:String)
 		{
-			this.loainghiid = loainghiid;
 			this.nhanvienid = nhanvienid;
 			this.lydo = lydo;
 			this.tungay = tungay;
 			this.toingay = toingay;
 			this.trangthai = trangthai;
+			this.soNgay = soNgay;
 		}
 	}
 }

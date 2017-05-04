@@ -30,7 +30,6 @@
 		
 		<s:HGroup gap="0" padding="20">
 			<s:VGroup width="100" gap="0" horizontalAlign="center" verticalAlign="middle">
-				<s:Label paddingTop="10" text="Loại nghỉ"/>
 				<s:Label paddingTop="30" text="Thời lượng"/>
 				<s:Label paddingTop="60" text="Lý do"/>
 			</s:VGroup>
@@ -38,9 +37,6 @@
 				
 			</mx:VRule>
 			<s:VGroup gap="0" horizontalAlign="left" paddingLeft="20" verticalAlign="middle">
-				<s:ComboBox width="350">
-					
-				</s:ComboBox>
 				
 				<s:HGroup gap="0" horizontalAlign="center" paddingBottom="20" paddingTop="20"
 						  verticalAlign="middle">
@@ -55,7 +51,7 @@
 						
 					</mx:DateField>
 					
-					<s:Label paddingLeft="10" text="0.5 ngày"/>
+					<s:Label paddingLeft="10" text="1 ngày"/>
 				</s:HGroup>
 				
 				<s:HGroup gap="0" horizontalAlign="center" paddingBottom="20" verticalAlign="middle">

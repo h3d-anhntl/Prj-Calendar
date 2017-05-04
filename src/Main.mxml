@@ -10,7 +10,6 @@
 			   xmlns:skin2="net.prjcanlendar.component.LichSuNghi.skin.*"
 			   xmlns:component="net.prjcanlendar.component.*" 
 			   xmlns:skin3="net.prjcanlendar.component.PheDuyet.skin.*" 
-			   xmlns:skin4="net.prjcanlendar.component.YCNGhiPhep.skin.*"
 			   xmlns:Menu="net.prjcanlendar.component.Menu.*" 
 			   xmlns:TaiKhoan="net.prjcanlendar.component.TaiKhoan.*" 
 			   xmlns:skin5="net.prjcanlendar.component.TaiKhoan.skin.*"
@@ -47,7 +46,6 @@
 	<s:states>
 		<s:State name="bantin" />
 		<s:State name="nhanvien" />
-		<s:State name="ycNghiphep" />
 		<s:State name="lsNghiphep" />
 		<s:State name="pheduyet" />
 		<s:State name="qlTaikhoan"/>
@@ -78,9 +76,6 @@
 			<skin5:QLTaiKhoan width="100%" height="620" includeIn="qlTaikhoan">
 				
 			</skin5:QLTaiKhoan>
-			<!--<skin4:YCNghiPhep width="100%" height="620" includeIn="ycNghiphep">
-				
-			</skin4:YCNghiPhep>-->
 			<skin2:LichSuNghi width="100%" height="620" includeIn="lsNghiphep">
 				
 			</skin2:LichSuNghi>

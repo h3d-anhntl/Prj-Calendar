@@ -6,7 +6,7 @@
 		 xmlns:view="net.prjcanlendar.component.view.*" 
 		 xmlns:calendar="net.prjcanlendar.component.calendar.*" 
 		 xmlns:skin="net.prjcanlendar.component.YCNGhiPhep.skin.*" 
-		 xmlns:skin1="net.prjcanlendar.component.BanTin.skin.*">
+		 xmlns:skin1="net.prjcanlendar.component.BanTin.skin.*" xmlns:BanTin="net.prjcanlendar.component.BanTin.*">
 	
 	<s:layout>
 		<s:VerticalLayout>
@@ -16,8 +16,7 @@
 	
 	<skin1:BanTinHeader width="100%" height="100%" />
 	
-	<skin:CalenderDemo width="100%" height="100%">
-		
-	</skin:CalenderDemo>
+	<!--<BanTin:BanTinTuan width="100%" height="100%" />-->
+	<calendar:CalendarView width="100%" height="100%" />
 	
 </s:Group>

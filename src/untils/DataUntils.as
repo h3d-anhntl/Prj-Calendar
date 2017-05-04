@@ -14,5 +14,7 @@ package untils
 		public function DataUntils()
 		{
 		}
+		
+		
 	}
 }

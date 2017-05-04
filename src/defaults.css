@@ -10,6 +10,15 @@
 @namespace calendar "net.prjcanlendar.component.calendar.*";
 @namespace fprj "http://f-project.net/xmlns/fprj/2013";
 
+LichSuNghi|TaoMoiYCNghiPhepCNPopup
+{
+	skinClass: ClassReference("net.prjcanlendar.component.LichSuNghi.skin.TaoMoiYCNghiPhepCNPopupSkin");
+}
+
+PheDuyet|TaoMoiYCNGhiPhepPopUpView{
+	skinClass: ClassReference("net.prjcanlendar.component.PheDuyet.skin.TaoMoiYCNGhiPhepPopUpSkin");
+}
+
 NVien|NhanVienNewView{
 	skinClass: ClassReference("net.prjcanlendar.component.NVien.skin.NhanVienNew");
 }
@@ -18,7 +27,7 @@ NVien|NhanVienNewCotentView{
 	skinClass:ClassReference("net.prjcanlendar.component.NVien.skin.NhanVienNewContentSkin");
 }
 
-fprj|CalendarSubColumnHeader{
+/*fprj|CalendarSubColumnHeader{
 	skinClass: ClassReference("net.prjcanlendar.component.YCNGhiPhep.skin.skins.SubColumnHeaderSkin")
 }
 
@@ -28,12 +37,12 @@ fprj|CalendarColumnHeader {
 
 fprj|CalendarRowHeader {
 	skinClass: ClassReference("net.prjcanlendar.component.YCNGhiPhep.skin.skins.RowHeaderSkin");
-}
+}*/
 
-fprj|Calendar
+/*fprj|Calendar
 {
 	skinClass:ClassReference("net.prjcanlendar.component.YCNGhiPhep.skin.skins.CalendarSkin");
-}
+}*/
 calendar|CalendarView
 {
 	skinClass:ClassReference("net.prjcanlendar.component.calendar.skin.CalendarViewSkin");

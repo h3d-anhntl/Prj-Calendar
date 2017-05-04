@@ -149,7 +149,7 @@
 										</mx:VRule>
 										
 										<s:VGroup gap="20" paddingLeft="10">
-											<mx:DateField  width="225" id="df_ngaysinh" selectedDate="@{hostComponent.userDetail.ngaySinh}">
+											<mx:DateField  width="225" id="df_ngaysinh" selectedDate="@{hostComponent.userDetail.ngaySinh}" editable="true">
 												
 											</mx:DateField>
 											<s:ComboBox  width="200" id="cb_gioitinh" selectedIndex="@{hostComponent.userDetail.gioiTinh}">

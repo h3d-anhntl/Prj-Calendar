@@ -56,8 +56,44 @@ package net.prjcanlendar.component.NVien
 		[Bindable]
 		public var dbTTHN:ArrayCollection;
 		
+		private var _userDetail:Nhanvien;
+
 		[Bindable]
-		public var userDetail:Nhanvien;
+		public function get userDetail():Nhanvien
+		{
+			return _userDetail;
+		}
+
+		public function set userDetail(value:Nhanvien):void
+		{
+			_userDetail = value;
+			updateAvarta();
+		}
+
+		protected function updateAvarta():void
+		{
+			if(userDetail && loader)
+			{
+				var base64Dec:Base64Decoder = new Base64Decoder();
+				var byteArr:ByteArray = new ByteArray();
+				if(userDetail.avatar != null){
+					if(userDetail.avatar != ""){
+						base64Dec.decode(userDetail.avatar);
+						
+						byteArr= base64Dec.toByteArray();
+						loader.loadBytes(byteArr);
+						
+						var ratio:Number = loader.height / loader.width;
+						loader.width = loader.width > loader.height ? mc.width : mc.width / ratio;
+						loader.height = loader.width < loader.height ? mc.height : mc.height * ratio;
+					}
+					else
+						loader = new Loader();
+				}
+				else
+					loader = new Loader();
+			}
+		}
 		
 		public function get phongbanService():PhongBanService
 		{
@@ -83,27 +119,7 @@ package net.prjcanlendar.component.NVien
 		{
 			/*userDetail = new Nhanvien;*/
 			userDetail ;
-			if(userDetail)
-			{
-				var base64Dec:Base64Decoder = new Base64Decoder();
-				var byteArr:ByteArray = new ByteArray();
-				if(userDetail.avatar != null){
-					if(userDetail.avatar != ""){
-						base64Dec.decode(userDetail.avatar);
-						
-						byteArr= base64Dec.toByteArray();
-						loader.loadBytes(byteArr);
-						
-						var ratio:Number = loader.height / loader.width;
-						loader.width = loader.width > loader.height ? mc.width : mc.width / ratio;
-						loader.height = loader.width < loader.height ? mc.height : mc.height * ratio;
-					}
-					else
-						loader = new Loader();
-				}
-				else
-					loader = new Loader();
-			}
+			
 			mc.addChild(loader);
 			fr.addEventListener(Event.SELECT,onselect);
 			fr.addEventListener(Event.COMPLETE,oncomplete);

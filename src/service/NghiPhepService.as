@@ -4,7 +4,7 @@ package service
 	import net.fproject.active.ActiveService;
 	import net.fproject.active.DbCriteria;
 
-	[RemoteObject(destination="schedule-server", modelClass="model.NghiPhep", uri="/nghi-pheps")]
+	[RemoteObject(destination="schedule-server", modelClass="model.Nghiphep", uri="/nghi-pheps")]
 	public class NghiPhepService extends ActiveService
 	{
 		private static var _serviceNP:NghiPhepService;
